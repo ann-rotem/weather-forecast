@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./Main.style";
 import axios from "axios";
-import { Button, Search } from "components";
+import { Button, Search, Tabs } from "components";
 import { TargetIcon } from "components/Icon";
 import useGeolocation from "utils/hooks/useGeolocation";
 import useBreakpoints from "utils/hooks/useBreakpoints";
@@ -47,6 +47,7 @@ const Main = () => {
 				</Button>
 				<Search />
 			</S.SearchSection>
+			<Tabs />
 			<div>
 				{status === "pending" ? (
 					<p>Loading...</p>
