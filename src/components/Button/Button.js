@@ -9,6 +9,7 @@ const Button = (props) => {
 		disabled = false,
 		children,
 		size = "md",
+		padding = 3,
 		primary,
 		secondary = false,
 	} = props;
@@ -21,6 +22,7 @@ const Button = (props) => {
 			primary={primary}
 			secondary={secondary}
 			size={size}
+			padding={padding}
 		>
 			{children}
 			{/* {icon && <Icon name={icon} size={size} />} */}
@@ -34,6 +36,7 @@ Button.prototypes = {
 	disabled: PropTypes.bool,
 	onClick: PropTypes.func,
 	size: PropTypes.string,
+	padding: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
 	primary: PropTypes.bool,
 	secondary: PropTypes.bool,
 };
