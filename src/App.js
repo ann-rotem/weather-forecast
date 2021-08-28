@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { GlobalStyle, lightTheme, darkTheme } from "GlobalStyle";
 import { ThemeProvider } from "styled-components";
-//import Search from "components/Search/Search";
-import { Header, Main } from "components";
-import * as S from "./styles";
+import { Footer, Header, Main } from "components";
 
 function App() {
 	const [theme, setTheme] = useState("dark");
@@ -14,7 +12,7 @@ function App() {
 			<GlobalStyle />
 			<Header theme={theme} toggleTheme={toggleTheme} />
 			<Main />
-			<S.Footer>Footer </S.Footer>
+			<Footer />
 		</ThemeProvider>
 	);
 }
