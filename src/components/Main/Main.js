@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./Main.style";
 import axios from "axios";
-import Button from "../Button/Button";
-import Search from "components/Search/Search";
+import { Button, Search } from "components";
 import { TargetIcon } from "components/Icon";
 import useGeolocation from "utils/hooks/useGeolocation";
+import useBreakpoints from "utils/hooks/useBreakpoints";
 
 const Main = () => {
 	const { latitude, longitude, loading, locationError, requestGeolocation } =
 		useGeolocation();
+	const { width } = useBreakpoints();
 	const [data, setData] = useState(null);
 	const [status, setStatus] = useState(loading);
 	const [error, setError] = useState(null);
@@ -40,13 +41,10 @@ const Main = () => {
 
 	return (
 		<S.Main>
-			<S.SearchSection>
-				<Button
-					onClick={requestGeolocation}
-					type="icon"
-					children={<TargetIcon size="lg" />}
-					secondary
-				/>
+			<S.SearchSection width={width}>
+				<Button onClick={requestGeolocation} type="icon" secondary>
+					<TargetIcon size="lg" />
+				</Button>
 				<Search />
 			</S.SearchSection>
 			<div>
