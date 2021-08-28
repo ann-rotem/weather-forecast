@@ -61,8 +61,8 @@ export const GlobalStyle = createGlobalStyle`
 export const lightTheme = {
 	name: "light",
 	primaryColor: "#6236b6",
-	backgroundPrimary: "#f0f0f5",
-	backgroundSecondary: "#efefef",
+	backgroundPrimary: "#dfdfdf",
+	backgroundSecondary: "#bebebe",
 	backgroundContrast: "#0000000A",
 	text: "#555",
 	textStrong: "#222",
@@ -72,7 +72,7 @@ export const lightTheme = {
 	shadow1: "0px 6px 12px #0000001F",
 	shadowStrong1: "0px 12px 24px #0000003D",
 	shadowWeak1: "0px 2px 4px #0000001F",
-	shadow: "-0.5rem 0.1rem 1rem #0000001F",
+	shadow: "-0.5rem 0.2rem 1rem #00000024",
 	shadowStrong: "-0.7rem 0.2rem 1.1rem #0000003D",
 	shadowWeak: "-0.2rem  0.1rem 0.4rem #0000001F",
 };
