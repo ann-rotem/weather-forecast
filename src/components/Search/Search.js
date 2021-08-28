@@ -34,8 +34,7 @@ const Form = styled.form`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	//padding: 0.5rem;
-	width: 18rem;
+	margin: 0 1rem;
 `;
 
 const Label = styled.label`
