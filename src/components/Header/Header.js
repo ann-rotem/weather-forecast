@@ -5,10 +5,10 @@ import useBreakpoints from "utils/hooks/useBreakpoints";
 
 const Header = (props) => {
 	const { theme, toggleTheme } = props;
-	const { width, screenSize } = useBreakpoints();
+	const { width } = useBreakpoints();
 	return (
 		<S.Header>
-			<S.Logo screenSize={screenSize} width={width}>
+			<S.Logo width={width}>
 				<span>Weather</span> Forecast
 			</S.Logo>
 			<ThemeToggler theme={theme} handleChange={toggleTheme} />
