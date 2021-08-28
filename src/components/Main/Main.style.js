@@ -7,7 +7,7 @@ export const Main = styled.main`
 	justify-content: start;
 	align-items: center;
 	height: calc(100vh - var(--header-height) - var(--footer-height));
-	padding: 2rem;
+	padding: 1rem 2rem;
 	overflow: hidden;
 `;
 
@@ -15,5 +15,7 @@ export const SearchSection = styled.section`
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
-	width: ${(props) => (props.width <= breakpoints.sm ? "100%" : "auto")};
+	justify-content: ${(props) =>
+		props.width <= breakpoints.sm ? "center" : "space-around"};
+	width: ${(props) => (props.width <= breakpoints.sm ? "100%" : "20rem")};
 `;
