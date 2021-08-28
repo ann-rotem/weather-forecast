@@ -3,14 +3,13 @@ import { breakpoints } from "utils/constants/breakpoints";
 
 export const Header = styled.header`
 	display: flex;
-	background: var(--header-bg);
-	background: ${({ theme }) => theme.backgroundContrast};
+	background: ${({ theme }) => theme.backgroundSecondary};
 	height: var(--header-height);
 	padding: 1rem 2rem;
 	align-items: center;
 	justify-content: space-between;
 	border-radius: 0;
-	box-shadow: ${({ theme }) => theme.shadowWeak};
+	box-shadow: ${({ theme }) => theme.shadow};
 `;
 
 export const Logo = styled.h1`
