@@ -1,3 +1,5 @@
+export const round = (num) => Math.round(num);
+
 let date = new Date();
 
 export const getCurrentDate = () => {
