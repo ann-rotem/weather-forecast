@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { Icon } from "./Icon";
+import { Icon } from "./Icon.style";
 
 const LocationIcon = forwardRef((props, ref) => (
 	<Icon ref={ref} viewBox="0 0 32 32" fillRule="evenodd" {...props}>
