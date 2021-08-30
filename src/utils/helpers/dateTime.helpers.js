@@ -26,3 +26,19 @@ export const isDay = () => {
 		date
 	);
 };
+
+export const convertUnixTime = (unix, format) => {
+	const options = {
+		hour12: false,
+	};
+	if (format === "date") {
+		options.day = "2-digit";
+		options.month = "2-digit";
+	}
+	if (format === "time") {
+		options.hour = "2-digit";
+		options.minute = "2-digit";
+	}
+
+	return new Intl.DateTimeFormat("default", options).format(unix * 1000);
+};
