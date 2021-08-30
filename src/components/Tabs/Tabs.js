@@ -1,15 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./Tabs.style";
+import { CurrentWeather, Forecast } from "components";
+import { getCurrentTime, getCurrentDate } from "utils/helpers/dateTime.helpers";
+import { LocationIcon } from "components/Icon";
 
-const Tabs = () => {
+const types = ["now", "hourly", "daily"];
+
+const Tabs = ({ data }) => {
+	const [active, setActive] = useState(types[0]);
+	const time = getCurrentTime();
+	const date = getCurrentDate();
 	return (
 		<S.Tabs>
-			<S.TabList>
-				<S.Tab>Now</S.Tab>
-				<S.Tab>Hourly</S.Tab>
-				<S.Tab>Daily</S.Tab>
-			</S.TabList>
-			<S.TabContent>content goes here</S.TabContent>
+			<S.ButtonGroup>
+				{types.map((type) => (
+					<S.TabButton
+						key={type}
+						active={active === type}
+						onClick={() => setActive(type)}
+					>
+						{type}
+					</S.TabButton>
+				))}
+			</S.ButtonGroup>
+
+			<S.TabContent>
+				<S.CurrentDetails>
+					<S.LocationWrapper>
+						<LocationIcon />
+						<p>City, Country</p>
+					</S.LocationWrapper>
+
+					<S.CurrentDateTime>
+						{date} | {time}
+					</S.CurrentDateTime>
+				</S.CurrentDetails>
+				{active === "now" && <CurrentWeather data={data.current} />}
+				{active === "hourly" && <p>Hourly</p>}
+				{active === "daily" && <Forecast data={data.daily} />}
+			</S.TabContent>
 		</S.Tabs>
 	);
 };
