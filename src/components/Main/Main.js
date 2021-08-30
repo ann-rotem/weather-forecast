@@ -47,16 +47,13 @@ const Main = () => {
 				</Button>
 				<Search />
 			</S.SearchSection>
-			<Tabs />
-			<div>
-				{status === "pending" ? (
-					<p>Loading...</p>
-				) : error ? (
-					<p>{error}</p>
-				) : locationError ? (
-					<p>{locationError}</p>
-				) : null}
-			</div>
+			{status === "pending" && <p>Loading...</p>}
+			{locationError ? (
+				<p>{locationError}</p>
+			) : error ? (
+				<p>{error}</p>
+			) : null}
+			{data && <Tabs data={data} />}
 		</S.Main>
 	);
 };
