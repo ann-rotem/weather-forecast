@@ -46,7 +46,15 @@ export const GlobalStyle = createGlobalStyle`
     body {
         background: ${({ theme }) => theme.backgroundPrimary};
         color: ${({ theme }) => theme.textPrimary};
-        overflow: hidden;
+        min-height: 100vh;
+        /* overflow: hidden; */
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 2rem;
+        min-height: calc(100vh - 7rem);
     }
 `;
 
@@ -61,20 +69,19 @@ export const GlobalStyle = createGlobalStyle`
 export const lightTheme = {
 	name: "light",
 	primaryColor: "#6236b6",
-	backgroundPrimary: "#dfdfdf",
-	backgroundSecondary: "#bebebe",
-	backgroundContrast: "#0000000A",
+	backgroundPrimary: "#e2e3e4",
+	backgroundSecondary: "#adadad",
+	// backgroundContrast: "#00000022",
+	backgroundContrast: "rgba(0, 0, 0, 0.2)",
 	text: "#555",
 	textStrong: "#222",
 	textWeak: "#aaa",
 	success: "#008567",
 	warning: "#d04f4e",
-	shadow1: "0px 6px 12px #0000001F",
-	shadowStrong1: "0px 12px 24px #0000003D",
-	shadowWeak1: "0px 2px 4px #0000001F",
 	shadow: "-0.5rem 0.2rem 1rem #00000024",
 	shadowStrong: "-0.7rem 0.2rem 1.1rem #0000003D",
 	shadowWeak: "-0.2rem  0.1rem 0.4rem #0000001F",
+	textShadow: "-0.1rem 0.1rem 0.2rem #0000003D",
 };
 
 export const darkTheme = {
@@ -82,13 +89,17 @@ export const darkTheme = {
 	primaryColor: "#6863ce",
 	backgroundPrimary: "#263040",
 	backgroundSecondary: "#404B5C",
-	backgroundContrast: "#FFFFFF14",
+	// backgroundContrast: "#FFFFFF14",
+	backgroundContrast: "rgba(0, 0, 0, 0.2)",
 	textStrong: "#fafafa",
 	text: "#C0CADC",
 	textWeak: "#606b7d",
 	success: "#17eba0",
 	warning: "#fc5a5a",
+	icon: "#ffffffDD",
 	shadow: "-0.6rem 0.1rem 1rem #0000005C",
 	shadowStrong: "-0.9rem 0.1rem 1.5rem #0000007A",
 	shadowWeak: "-0.2rem  0.1rem 0.4rem #0000003D",
+	textShadow: "-0.2rem 0.2rem 0.2rem #0000005C",
+	iconShadow: "-0.1rem 0.1rem 0.05rem rgba(0 0 0 / 0.4)",
 };
