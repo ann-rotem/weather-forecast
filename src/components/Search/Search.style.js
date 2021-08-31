@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+export const SearchSection = styled.section`
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	justify-content: center;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 20rem;
+`;
+
 export const Form = styled.form`
 	display: flex;
 	flex-direction: column;
