@@ -28,16 +28,18 @@ const Tabs = ({ data }) => {
 				<S.CurrentDetails>
 					<S.LocationWrapper>
 						<LocationIcon />
-						<p>City, Country</p>
+						<p>
+							{data.name}, {data.sys.country}{" "}
+						</p>
 					</S.LocationWrapper>
 
 					<S.CurrentDateTime>
 						{date} | {time}
 					</S.CurrentDateTime>
 				</S.CurrentDetails>
-				{active === "now" && <CurrentWeather data={data.current} />}
+				{active === "now" && <CurrentWeather data={data} />}
 				{active === "hourly" && <p>Hourly</p>}
-				{active === "daily" && <Forecast data={data.daily} />}
+				{active === "daily" && <Forecast />}
 			</S.TabContent>
 		</S.Tabs>
 	);

@@ -3,35 +3,11 @@ import styled from "styled-components";
 export const Tabs = styled.section`
 	display: flex;
 	flex-direction: column;
-	margin-top: 1rem;
+	margin: 2rem auto;
 	width: 100%;
 	max-width: 20rem;
 	height: auto;
 	min-height: 20rem;
-`;
-
-export const TabList = styled.ul`
-	display: flex;
-	margin: 0 auto;
-	list-style: none;
-`;
-
-export const Tab = styled.li`
-	display: inline-flex;
-	padding: 0.2rem 0.5rem;
-	color: ${(props) =>
-		props.active ? props.theme.primaryColor : props.theme.text};
-	background: ${(props) => props.active && props.theme.backgroundContrast};
-	border-radius: 40% 40% 0 0;
-
-	&:hover {
-		color: ${({ theme }) => theme.textStrong};
-	}
-
-	&:focus-visible {
-		color: ${({ theme }) => theme.text};
-		background: ${({ theme }) => theme.primaryColor};
-	}
 `;
 
 export const ButtonGroup = styled.div`
@@ -41,15 +17,24 @@ export const ButtonGroup = styled.div`
 
 export const TabButton = styled.button`
 	display: inline-flex;
-	padding: 0.35rem 1rem;
-	margin: 0 0.5rem;
+	padding: 0.5rem 1.2rem;
+	margin: 0 0.3rem;
+	font-size: 1.2rem;
 	font-weight: 300;
+	cursor: pointer;
 	color: ${(props) =>
 		props.active ? props.theme.textStrong : props.theme.text};
 	background: ${({ theme }) => theme.backgroundContrast};
 	border-radius: 50% 50% 0 0 / 70%;
 	border: none;
 	opacity: ${(props) => (props.active ? "1" : "0.4")};
+	box-shadow: ${({ theme }) => theme.shadowWeak};
+	text-transform: capitalize;
+
+	&:hover {
+		color: ${(props) => props.theme.textStrong};
+		opacity: 0.8;
+	}
 `;
 
 export const TabContent = styled.article`
@@ -58,6 +43,8 @@ export const TabContent = styled.article`
 	width: 100%;
 	padding: 0.5rem;
 	background: ${({ theme }) => theme.backgroundContrast};
+	border-radius: 10%;
+	box-shadow: ${({ theme }) => theme.shadow};
 `;
 
 export const CurrentDetails = styled.div`
