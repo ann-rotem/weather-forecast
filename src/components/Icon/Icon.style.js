@@ -5,6 +5,8 @@ const sizesToNum = {
 	sm: 0.5,
 	md: 1,
 	lg: 2,
+	xl: 4,
+	xxl: 6,
 };
 
 const colorCss = (props) => css`
@@ -14,12 +16,12 @@ const colorCss = (props) => css`
 		fill: inherit;
 		stroke: inherit;
 	}
-	*:not([stroke]) {
+	/* *:not([stroke]) {
 		&[fill="none"] {
 			stroke-width: 0;
 		}
-	}
-	*[stroke*="#"],
+	} */
+	/* *[stroke*="#"],
 	*[STROKE*="#"] {
 		stroke: inherit;
 		fill: none;
@@ -30,7 +32,7 @@ const colorCss = (props) => css`
 	*[FILL*="#"] {
 		fill: inherit;
 		stroke: none;
-	}
+	} */
 `;
 
 const Svg = forwardRef(({ size, color, ...rest }, ref) => (
