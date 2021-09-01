@@ -2,8 +2,8 @@ const SnowIcon = ({ size }) => {
 	return (
 		<svg
 			viewBox="0 -4 454.995 454"
-			height={size || "80"}
-			width={size || "80"}
+			height={size}
+			width={size}
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path

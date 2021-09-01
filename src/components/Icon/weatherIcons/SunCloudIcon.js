@@ -1,8 +1,8 @@
 const SunCloudIcon = ({ size }) => {
 	return (
 		<svg
-			height={size || "80"}
-			width={size || "80"}
+			height={size}
+			width={size}
 			viewBox="0 -112 430.56492 430"
 			xmlns="http://www.w3.org/2000/svg"
 		>

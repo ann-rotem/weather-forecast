@@ -2,8 +2,8 @@ const CloudsIcon = ({ size }) => {
 	return (
 		<svg
 			viewBox="0 -91 458.22868 458"
-			height={size || "80"}
-			width={size || "80"}
+			height={size}
+			width={size}
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path

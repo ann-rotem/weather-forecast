@@ -1,8 +1,8 @@
 const SunIcon = ({ size }) => {
 	return (
 		<svg
-			height={size || "80"}
-			width={size || "80"}
+			height={size}
+			width={size}
 			viewBox="0 0 454 454"
 			xmlns="http://www.w3.org/2000/svg"
 		>
