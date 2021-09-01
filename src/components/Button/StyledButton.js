@@ -32,10 +32,12 @@ const buttonStyle = (props) => css`
 `;
 
 const iconStyle = (props) => css`
+	display: inline-flex;
 	border: 0.1rem solid ${({ theme }) => theme.primaryColor};
 	border-radius: 50%;
 	line-height: 1;
-	aspect-ratio: 1;
+	justify-content: center;
+	align-items: center;
 
 	${({ size, padding }) => {
 		const sizeNum = sizesToNum[size];
@@ -44,7 +46,6 @@ const iconStyle = (props) => css`
         max-height: ${sizeNum * 4}rem;
     `;
 	}}
-	aspect-ratio: 1;
 
 	${(props) => props.primary && primaryStyle(props)};
 	${(props) => props.secondary && secondaryStyle(props)};
@@ -60,6 +61,7 @@ export const StyledButton = styled.button`
 	background: transparent;
 	overflow: visible;
 	text-transform: none;
+	text-align: center;
 
 	border: none;
 
