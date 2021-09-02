@@ -9,7 +9,11 @@ const Footer = () => {
 				Created by <span>Ann Rotem</span> 2021
 			</S.Text>
 			<S.Links>
-				<S.Link target="_blank" href="https://github.com/ann-rotem">
+				<S.Link
+					target="_blank"
+					aria-label="Github profile link"
+					href="https://github.com/ann-rotem"
+				>
 					<GithubIcon size="lg" />
 				</S.Link>
 			</S.Links>
