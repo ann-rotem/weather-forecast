@@ -6,6 +6,7 @@ const Button = (props) => {
 	const {
 		type = "button",
 		onClick,
+		labelText,
 		disabled = false,
 		children,
 		size = "md",
@@ -23,6 +24,7 @@ const Button = (props) => {
 			secondary={secondary}
 			size={size}
 			padding={padding}
+			aria-label={labelText}
 		>
 			{children}
 			{/* {icon && <Icon name={icon} size={size} />} */}
@@ -35,6 +37,7 @@ Button.prototypes = {
 	children: PropTypes.node.isRequired,
 	disabled: PropTypes.bool,
 	onClick: PropTypes.func,
+	labelText: PropTypes.string,
 	size: PropTypes.string,
 	padding: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
 	primary: PropTypes.bool,
