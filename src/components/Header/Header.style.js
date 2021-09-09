@@ -5,7 +5,6 @@ export const Header = styled.header`
 	grid-area: header;
 	display: flex;
 	background: ${({ theme }) => theme.backgroundSecondary};
-	//height: var(--header-height);
 	padding: 1rem 2rem;
 	align-items: center;
 	justify-content: space-between;
@@ -28,7 +27,6 @@ export const Logo = styled.h1`
 	font-size: 2rem;
 	line-height: 1;
 	color: ${({ theme }) => theme.primaryColor};
-	//width: ${(props) => (props.width <= breakpoints.sm ? "10rem" : "16rem")};
 	font-weight: 800;
 	text-shadow: ${({ theme }) => theme.textShadow};
 	span {
