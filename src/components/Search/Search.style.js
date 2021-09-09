@@ -1,13 +1,18 @@
 import styled from "styled-components";
+import { breakpoints } from "utils/constants/breakpoints";
 
 export const SearchSection = styled.section`
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
 	justify-content: center;
-	margin: 0 auto;
-	width: 100%;
 	max-width: 20rem;
+	margin-bottom: 1rem;
+
+	@media only screen and (min-width: ${breakpoints.lg}px) {
+		height: 10%;
+		margin-bottom: 2rem;
+	}
 `;
 
 export const Form = styled.form`
@@ -16,11 +21,17 @@ export const Form = styled.form`
 	justify-content: center;
 	align-items: center;
 	margin: 0 1rem;
+
+	@media only screen and (min-width: ${breakpoints.lg}px) {
+		line-height: 2;
+		label {
+			padding: 0.5rem;
+		}
+	}
 `;
 
 export const Label = styled.label`
 	display: flex;
-	padding: 0.5rem;
 	color: ${({ theme }) => theme.textWeak};
 	font-weight: 300;
 `;
@@ -32,6 +43,7 @@ export const SearchBar = styled.div`
 	box-shadow: ${({ theme }) => theme.shadow};
 	background: ${({ theme }) => theme.backgroundSecondary};
 	border-radius: 1.5rem;
+	height: 2rem;
 `;
 
 export const Input = styled.input`
