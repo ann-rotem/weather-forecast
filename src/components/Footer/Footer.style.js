@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Footer = styled.footer`
+	grid-area: footer;
 	background: ${({ theme }) => theme.backgroundSecondary};
 	color: ${({ theme }) => theme.textSecondary};
 	display: flex;
