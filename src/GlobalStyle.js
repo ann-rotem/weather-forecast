@@ -1,27 +1,9 @@
 import { createGlobalStyle } from "styled-components";
+import { breakpoints } from "utils/constants/breakpoints";
+import dayBackground from "assets/images/day.jpg";
+import nightBackground from "assets/images/night.jpg";
 
 export const GlobalStyle = createGlobalStyle`
-    :root {
-        //color
-        --body-bg: linear-gradient(to bottom right, rgb(0, 0, 70), rgb(28, 181, 224));
-        --header-bg: rgba(209, 209, 249, 0.15);
-        --main-bg: #3076af;
-        --footer-bg: #031330;
-
-
-
-        --light: rgba(210, 200, 220, 1);
-        --light2: rgba(220, 220, 220, 0.7);
-        --dark: #070236;
-
-        //Size
-        --header-height: 5rem;
-        --footer-height: 2rem;
-        --shadow: 0px 6px 12px #0000001F;
-	    --shadowStrong: 0px 12px 24px #0000003D;
-	    --shadowWeak: 0px 2px 4px #0000001F;
-    }
-
     * {
         box-sizing: border-box;
         padding: 0;
@@ -31,75 +13,116 @@ export const GlobalStyle = createGlobalStyle`
     html {
         font-size: 16px;
         font-family: 'Assistant', sans-serif;
+        background-image: ${({ theme }) => theme.backgroundImage};
+        background-size: cover;
+        background-attachment: fixed;
 
-        @media only screen and (min-width: 320px) {
-            font-size: calc(16px + 4 * ((100vw - 320px) / 1080));
+        @media only screen and (min-width: ${breakpoints.xs}px) {
+            font-size: calc(16px + 4 * ((100vw - ${breakpoints.xs}px) / 1080));
             /* calc([minimum font size] + ([maximum font size] - [minimum font size]) *
             ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); */
         }
 
-         @media only screen and (min-width: 1400px) {
+         @media only screen and (min-width: ${breakpoints.xxl}px) {
             font-size: 20px;
         }
     }
 
     body {
-        background: ${({ theme }) => theme.backgroundPrimary};
         color: ${({ theme }) => theme.textPrimary};
-        min-height: 100vh;
-        /* overflow: hidden; */
+        height: 100vh;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    #root {
+        min-height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-rows: 5rem auto 3rem;
+        grid-template-areas:
+            "header"
+            "main"
+            "footer"
+        ;
+
+        @media only screen and (min-width: ${breakpoints.lg}px) {
+            grid-template-rows: 100%;
+            grid-template-columns: 20vw auto;
+            grid-template-areas:
+                "header main"
+            ;   
+	    }
     }
 
     main {
+        grid-area: main;
         display: flex;
         flex-direction: column;
-        padding: 1rem 2rem;
-        min-height: calc(100vh - 7rem);
+        align-items: center;
+        overflow-x: hidden;
+        padding: 0 1rem;
+       
+
+        @media only screen and (min-width: ${breakpoints.lg}px) {
+            justify-content: flex-start;
+            margin: 0;
+	    }
+
+       
+    }
+
+    ::-webkit-scrollbar {
+		width: 0.5rem;
+	}
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: ${({ theme }) => theme.textWeak};
+        border-radius: 1.5rem;
+        //background-clip: content-box;
+        width: 0.5rem;
+        
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: ${({ theme }) => theme.text};
     }
 `;
 
-// export const GlassEffect = css`
-// 	background: rgba(255, 255, 255, 0.25);
-// 	box-shadow: 0 8px 32px 0 rgba(31, 38, 35, 0.37);
-// 	backdrop-filter: blur(4px);
-// 	-webkit-backdrop-filter: blur(4px);
-// 	border-radius: 10px;
-// `;
-
 export const lightTheme = {
 	name: "light",
-	primaryColor: "#6236b6",
-	backgroundPrimary: "#e2e3e4",
-	backgroundSecondary: "#adadad",
-	// backgroundContrast: "#00000022",
-	backgroundContrast: "rgba(0, 0, 0, 0.2)",
-	text: "#555",
+	backgroundImage: `url(${dayBackground})`,
+	primaryColor: "#3671b6",
+	backgroundPrimary: "#d2e4e3",
+	backgroundSecondary: "#c0dad8",
+	backgroundContrast: "rgba(200, 228, 228, 0.4)",
+	text: "#333",
 	textStrong: "#222",
-	textWeak: "#aaa",
+	textWeak: "#555",
 	success: "#008567",
 	warning: "#d04f4e",
 	shadow: "-0.5rem 0.2rem 1rem #00000024",
 	shadowStrong: "-0.7rem 0.2rem 1.1rem #0000003D",
-	shadowWeak: "-0.2rem  0.1rem 0.4rem #0000001F",
-	textShadow: "-0.1rem 0.1rem 0.2rem #0000003D",
+	shadowWeak: "-0.1rem  0.1rem 0.2rem #0000001F",
+	textShadow: "-0.1rem -0.1rem 0.1rem rgba(100, 100, 100, 0.3)",
 };
 
 export const darkTheme = {
 	name: "dark",
-	primaryColor: "#6863ce",
-	backgroundPrimary: "#263040",
-	backgroundSecondary: "#404B5C",
-	// backgroundContrast: "#FFFFFF14",
-	backgroundContrast: "rgba(0, 0, 0, 0.2)",
-	textStrong: "#fafafa",
-	text: "#C0CADC",
-	textWeak: "#606b7d",
+	backgroundImage: `url(${nightBackground})`,
+	primaryColor: "#f8be71",
+	backgroundPrimary: "#2f3235",
+	backgroundSecondary: "#3c3e3f",
+	backgroundContrast: "rgba(23, 23, 23, 0.25)",
+	textStrong: "#f7f7f2",
+	text: "#e6e5d5",
+	textWeak: "#dfdfdf",
 	success: "#17eba0",
 	warning: "#fc5a5a",
 	icon: "#ffffffDD",
 	shadow: "-0.6rem 0.1rem 1rem #0000005C",
 	shadowStrong: "-0.9rem 0.1rem 1.5rem #0000007A",
-	shadowWeak: "-0.2rem  0.1rem 0.4rem #0000003D",
-	textShadow: "-0.2rem 0.2rem 0.2rem #0000005C",
-	iconShadow: "-0.1rem 0.1rem 0.05rem rgba(0 0 0 / 0.4)",
+	shadowWeak: "-0.1rem  0.1rem 0.2rem #0000003D",
+	textShadow: "-0.1rem -0.1rem 0.1rem rgba(0, 0, 0, 0.4)",
 };
