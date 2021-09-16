@@ -1,12 +1,8 @@
 import styled from "styled-components/macro";
-//import { breakpoints } from "utils/constants/breakpoints";
 
 export const WeatherContainer = styled.div`
-	border-radius: 0 0 1.5rem 1.5rem;
-	background-color: ${({ theme }) => theme.backgroundContrast};
-	color: ${({ theme }) => theme.text};
-	max-height: calc(100% - 4.5rem);
-	//width: 100%;
+	height: 100%;
+	width: 100%;
 `;
 
 export const Paragraph = styled.p`
@@ -35,9 +31,12 @@ export const IconWrapper = styled.span`
 	display: inline-flex;
 	width: ${(props) => props.size && `${props.size}em`};
 	height: 100%;
+	padding: 0.1rem;
 
 	svg {
-		max-height: 100%;
+		width: 100%;
+		height: auto;
+		filter: drop-shadow(-2px -2px 1px rgba(50, 50, 50, 0.3));
 	}
 `;
 
