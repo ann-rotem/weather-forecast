@@ -16,30 +16,15 @@ const colorCss = (props) => css`
 		fill: inherit;
 		stroke: inherit;
 	}
-	/* *:not([stroke]) {
-		&[fill="none"] {
-			stroke-width: 0;
-		}
-	} */
-	/* *[stroke*="#"],
-	*[STROKE*="#"] {
-		stroke: inherit;
-		fill: none;
-	}
-	*[fill-rule],
-	*[FILL-RULE],
-	*[fill*="#"],
-	*[FILL*="#"] {
+	path {
 		fill: inherit;
-		stroke: none;
-	} */
+		stroke: inherit;
+	}
 `;
 
 const Svg = forwardRef(({ size, color, ...rest }, ref) => (
 	<svg ref={ref} {...rest} />
 ));
-
-//Svg.displayName = "Icon";
 
 const Icon = styled(Svg)`
 	display: inline-block;
