@@ -1,19 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GlobalStyle, lightTheme, darkTheme } from "GlobalStyle";
 import { ThemeProvider } from "styled-components";
-import { useFetch } from "utils/hooks";
 import { ErrorMessage, Footer, Header, Search, Tabs } from "components";
+import { useGetCoordsByName, useGetWeatherByCoords } from "utils/hooks";
 
 function App() {
 	const [theme, setTheme] = useState("dark");
 	const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
-	const { data, loading, error, setUrl } = useFetch();
+	const { coords, location, setQuery } = useGetCoordsByName();
+	const {
+		currentWeather,
+		hourlyWeather,
+		dailyWeather,
+		loading,
+		error,
+		setCoords,
+	} = useGetWeatherByCoords();
 
-	const handleSearch = (query, units = "metric") => {
-		setUrl(
-			`${process.env.REACT_APP_OPEN_WEATHER_URL}data/2.5/weather?q=${query}&units=${units}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`
-		);
+	useEffect(() => {
+		if (!coords) return;
+		setCoords(coords);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [coords]);
+
+	const handleSearch = (searchTerm) => {
+		setQuery(searchTerm);
+	};
+
+	const getCurrentLocationCoords = (userCoords) => {
+		setCoords(userCoords);
 	};
 
 	return (
@@ -21,15 +37,22 @@ function App() {
 			<GlobalStyle />
 			<Header theme={theme} toggleTheme={toggleTheme} />
 			<main>
-				<Search handleSearch={handleSearch} />
+				<Search
+					handleSearch={handleSearch}
+					getCurrentLocationWeather={getCurrentLocationCoords}
+				/>
 				{loading ? (
 					<p>Loading...</p>
 				) : error ? (
 					<ErrorMessage error={error} />
-				) : data ? (
-					<Tabs data={data} />
+				) : currentWeather ? (
+					<Tabs
+						location={location}
+						currentWeather={currentWeather}
+						hourlyWeather={hourlyWeather}
+						dailyWeather={dailyWeather}
+					/>
 				) : null}
-				{/* <Main /> */}
 			</main>
 			<Footer />
 		</ThemeProvider>
@@ -37,12 +60,3 @@ function App() {
 }
 
 export default App;
-
-// {
-// 	/* <S.Header>
-// 					<S.Logo screenSize={screenSize} width={width}>
-// 						<span>Weather</span> Forecast
-// 					</S.Logo>
-// 					<ThemeToggler theme={theme} handleChange={toggleTheme} />
-// 				</S.Header> */
-// }
