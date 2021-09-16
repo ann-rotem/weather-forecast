@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import * as S from "./Search.style";
-import { Button } from "components";
 import { SearchIcon, TargetIcon } from "components/Icon";
 import { useGeolocation } from "utils/hooks";
 
@@ -19,10 +18,6 @@ const Search = ({ handleSearch, getCurrentLocationWeather }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [latitude, longitude]);
 
-	const handleClick = () => {
-		requestGeolocation();
-	};
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		handleSearch(query);
@@ -31,36 +26,38 @@ const Search = ({ handleSearch, getCurrentLocationWeather }) => {
 
 	return (
 		<S.SearchSection>
-			<Button
-				onClick={handleClick}
-				type="icon"
-				secondary
-				labelText="current location weather"
+			<S.CurrentLocation
+				type="button"
+				onClick={requestGeolocation}
+				aria-label="Current location weather"
 			>
-				<TargetIcon size="md" />
-			</Button>
-			<S.Form onSubmit={handleSubmit}>
-				<S.Label htmlFor="search">Enter city, country, or zip code</S.Label>
-				<S.SearchBar>
-					<S.Input
-						type="search"
-						id="search"
-						name="search"
-						required
-						value={query}
-						// disabled={disabled}
-						onChange={handleChange}
-						minLength="2"
-						autoComplete="off"
-					/>
-
-					<Button
-						type="icon"
-						primary
-						labelText="search"
-						children={<SearchIcon size="md" />}
-					/>
-				</S.SearchBar>
+				<TargetIcon size="lg" />
+			</S.CurrentLocation>
+			<S.Form onSubmit={handleSubmit} role="search">
+				<S.Label htmlFor="search">
+					<span>Enter city, country, or zip code</span>
+				</S.Label>
+				<S.Input
+					type="search"
+					role="searchbox"
+					id="search"
+					name="search"
+					title="search"
+					required
+					value={query}
+					onChange={handleChange}
+					placeholder="Enter location name"
+					minLength="2"
+					aria-label="search"
+					autoComplete="off"
+				/>
+				<S.SearchButton
+					role="button"
+					type="submit"
+					aria-label="Search button"
+				>
+					<SearchIcon size="lg" />
+				</S.SearchButton>
 			</S.Form>
 		</S.SearchSection>
 	);
