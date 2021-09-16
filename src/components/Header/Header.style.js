@@ -1,36 +1,42 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { breakpoints } from "utils/constants/breakpoints";
 
 export const Header = styled.header`
 	grid-area: header;
 	display: flex;
-	background: ${({ theme }) => theme.backgroundSecondary};
-	padding: 1rem 2rem;
-	align-items: center;
-	justify-content: space-between;
-	border-radius: 0;
+	background: ${({ theme }) => theme.backgroundContrast};
+	padding: 0 1rem;
 	box-shadow: ${({ theme }) => theme.shadow};
+	backdrop-filter: blur(0.5rem);
+
+	@media only screen and (min-width: ${breakpoints.sm}px) {
+		padding: 0.5rem 2rem;
+	}
 
 	@media only screen and (min-width: ${breakpoints.lg}px) {
 		flex-direction: column;
-		justify-content: flex-start;
+		justify-content: space-between;
+		padding: 0.5rem;
+	}
+`;
+export const HeaderMain = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
 
-		h1 {
-			padding-bottom: 2rem;
-		}
+	@media only screen and (min-width: ${breakpoints.lg}px) {
+		flex-direction: column;
 	}
 `;
 
-export const Logo = styled.h1`
-	display: flex;
-	flex-wrap: wrap;
-	font-size: 2rem;
-	line-height: 1;
-	color: ${({ theme }) => theme.primaryColor};
-	font-weight: 800;
-	text-shadow: ${({ theme }) => theme.textShadow};
-	span {
-		font-weight: 300;
-		padding-right: 0.3rem;
+export const HeaderBottom = styled.div`
+	display: none;
+
+	@media only screen and (min-width: ${breakpoints.lg}px) {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: center;
+		align-items: center;
 	}
 `;

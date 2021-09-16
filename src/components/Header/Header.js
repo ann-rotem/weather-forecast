@@ -1,17 +1,20 @@
-import React from "react";
 import * as S from "./Header.style";
+import Logo from "components/Logo/Logo";
 import { ThemeToggler } from "components";
-import useBreakpoints from "utils/hooks/useBreakpoints";
+import Info from "components/Info/Info";
 
 const Header = (props) => {
 	const { theme, toggleTheme } = props;
-	const { width } = useBreakpoints();
+
 	return (
 		<S.Header>
-			<S.Logo width={width}>
-				<span>Weather</span> Forecast
-			</S.Logo>
-			<ThemeToggler theme={theme} handleChange={toggleTheme} />
+			<S.HeaderMain>
+				<Logo />
+				<ThemeToggler theme={theme} handleChange={toggleTheme} />
+			</S.HeaderMain>
+			<S.HeaderBottom>
+				<Info />
+			</S.HeaderBottom>
 		</S.Header>
 	);
 };
