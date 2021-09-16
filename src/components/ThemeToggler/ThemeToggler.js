@@ -13,15 +13,3 @@ const ThemeToggler = (props) => {
 };
 
 export default ThemeToggler;
-
-// <S.Toggler onClick={onChange}>
-// 	{value ? (
-// 		<span aria-label="Dark mode" role="img">
-// 			🌜
-// 		</span>
-// 	) : (
-// 		<span aria-label="Light mode" role="img">
-// 			🌞
-// 		</span>
-// 	)}
-// </S.Toggler>
