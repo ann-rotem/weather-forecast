@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components";
+import { breakpoints } from "utils/constants/breakpoints";
 
 export const Toggler = styled.button`
 	display: inline-block;
 	position: relative;
 	width: 3rem;
 	height: 1.5rem;
-	/* border: 0.1rem solid ${({ theme }) => theme.primaryColor}; */
+	overflow: hidden;
 	border: none;
 	background: transparent;
 	border-radius: 0.75rem;
@@ -14,6 +15,10 @@ export const Toggler = styled.button`
 		theme.name === "dark"
 			? "linear-gradient(#15082c, #27135c, #3d196d)"
 			: "linear-gradient(to bottom right, #0b5466, #4ea8cc, #60cfee)"};
+
+	@media only screen and (min-width: ${breakpoints.lg}px) {
+		margin: 0 auto;
+	}
 `;
 
 export const Switch = styled.span`
@@ -27,10 +32,10 @@ export const Switch = styled.span`
 	height: 1.2rem;
 	border-radius: 0.75rem;
 	background: ${({ theme }) =>
-		theme.name === "dark" ? "#d9d8d0" : "#f3ca58"};
+		theme.name === "dark" ? "#f5f0cf" : "#f3ca58"};
 	box-shadow: ${({ theme }) =>
 		theme.name === "dark"
-			? "inset -3px 1px 3px #899098, 0 0 1px 0.08rem rgba(235, 233, 225, 0.1)"
+			? "inset -3px 1px 3px #e7e18c, 0 0 1px 0.15rem rgba(196, 194, 200, 0.2)"
 			: "inset -3px 1px 3px #dda96f, 0 0 1px 0.1rem rgba(245, 213, 127, 0.4)"};
 	transition: all 250ms ease-in;
 	${({ theme }) => theme.name === "dark" && css``}
@@ -38,26 +43,23 @@ export const Switch = styled.span`
 			&::after {
 		content: "";
 		position: absolute;
-
-		background: #b9b8b0;
 		background: ${({ theme }) =>
-			theme.name === "dark" ? "#b9b8b0" : "transparent"};
-		box-shadow: inset 1px -1px 0px #ababac;
-		box-shadow: inset 1px -1px 0px ${({ theme }) => (theme.name === "dark" ? "#ababac" : "transparent")};
+			theme.name === "dark" ? "rgba(190, 190, 190, 0.3)" : "transparent"};
+		box-shadow: inset 1px -1px 0px ${({ theme }) => (theme.name === "dark" ? "rgba(180, 180, 180, 0.2)" : "transparent")};
 	}
 	&:before {
 		height: 0.35rem;
 		width: 0.35rem;
 		border-radius: 0.4rem;
-		top: 3%;
+		top: 10%;
 		left: 15%;
 	}
 
 	&:after {
 		height: 0.15rem;
 		width: 0.15rem;
-		top: 50%;
-		left: 40%;
+		top: 40%;
+		left: 50%;
 		border-radius: 50%;
 	}
 `;
