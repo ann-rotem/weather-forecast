@@ -11,36 +11,13 @@ export const Row = styled.div`
 	justify-content: space-between;
 `;
 
-export const Hourly = styled(Column)`
-	border-radius: 0 0 1.5rem 1.5rem;
-	background-color: ${({ theme }) => theme.backgroundContrast};
-	color: ${({ theme }) => theme.text};
-	padding: 0 0.5rem;
-`;
-
 export const ActiveWrapper = styled(Column)`
 	font-size: 1.5rem;
 	padding: 1rem;
 	position: relative;
 
-	/* @media only screen and (min-width: ${breakpoints.lg}px) {
-		width: 25rem;
-		margin: 0 auto;
-		padding: 0;
-	} */
-`;
-
-export const Background = styled.div`
-	display: inline-flex;
-	position: absolute;
-	top: 1rem;
-	left: 33%;
-	width: 33%;
-	padding: 1rem;
-
-	svg {
-		max-height: 100%;
-		filter: opacity(15%);
+	@media only screen and (min-width: ${breakpoints.lg}px) {
+		padding: 1rem 2rem;
 	}
 `;
 
@@ -67,6 +44,9 @@ export const ActiveDetails = styled(Row)`
 		color: ${({ theme }) => theme.textStrong};
 		text-transform: capitalize;
 	}
+	@media only screen and (min-width: ${breakpoints.lg}px) {
+		padding: 0 1rem;
+	}
 `;
 
 export const HourCards = styled.div`
@@ -85,16 +65,23 @@ export const HourCard = styled(Column)`
 		props.active
 			? props.theme.backgroundPrimary
 			: props.theme.backgroundContrast};
-	padding: 0.5rem 1rem;
-	border-radius: 0.5rem;
-	margin: 0.5rem;
+	padding: 0.2rem 0.5rem;
+	border-radius: 0.7rem;
+	margin: 0.3rem;
+	width: 5rem;
 	font-size: 1rem;
 	cursor: ${(props) => (props.active ? "default" : "pointer")};
 	transition: all 250ms linear;
 
+	svg {
+		margin: 0.3rem 0;
+		width: 60%;
+		filter: drop-shadow(-2px -3px 1px rgba(50, 50, 50, 0.2));
+	}
+
 	&:hover {
 		background: ${({ theme }) => theme.backgroundPrimary};
-		opacity: ${(props) => (props.active ? "1" : "0.5")};
+		opacity: ${(props) => (props.active ? "1" : "0.7")};
 	}
 `;
 
@@ -104,17 +91,10 @@ export const DateTime = styled(Column)`
 
 export const HourlyDate = styled.p`
 	color: ${({ theme }) => theme.textWeak};
-	font-size: 0.9em;
+	font-size: 0.8em;
 `;
 
 export const HourlyTime = styled.p`
-	font-size: 1.1em;
-	color: ${({ theme }) => theme.textStrong};
-`;
-
-export const Temperature = styled.p`
-	font-size: 2em;
-	margin: 0.5rem 0;
-	font-weight: 800;
+	font-size: 1em;
 	color: ${({ theme }) => theme.textStrong};
 `;

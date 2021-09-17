@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./Hourly.style";
+import { Paragraph, Temperature } from "../Weather.style";
 import { WeatherIcon } from "components/Icon";
 import { round, convertUnixTime } from "utils/helpers/dateTime.helpers";
 
@@ -8,11 +9,8 @@ const Hourly = ({ data }) => {
 	const [active, setActive] = useState(hourlyData[0]);
 
 	return (
-		<S.Hourly>
+		<>
 			<S.ActiveWrapper condition={active.weather[0].icon}>
-				<S.Background>
-					<WeatherIcon condition={active.weather[0].icon} />
-				</S.Background>
 				<S.Row>
 					<S.ActiveDateTime>
 						<S.HourlyDate>
@@ -22,18 +20,20 @@ const Hourly = ({ data }) => {
 							{convertUnixTime(active.dt, "time")}
 						</S.HourlyTime>
 					</S.ActiveDateTime>
-					<S.ActiveTemp>
+					<Temperature shadow align="flex-end" marginBottom="1rem">
 						<h2>{round(active.temp)}&deg;</h2>
-						<p>Feels like {round(active.feels_like)}&deg;</p>
-					</S.ActiveTemp>
+						<Paragraph>
+							Feels like {round(active.feels_like)}&deg;
+						</Paragraph>
+					</Temperature>
 				</S.Row>
 				<S.ActiveDetails>
-					<p>{active.humidity}% Humidity</p>
-					<p>{round(active.pop * 100)}% Precipitation</p>
+					<Paragraph>{active.humidity}% Humidity</Paragraph>
+					<Paragraph>{round(active.pop * 100)}% Precipitation</Paragraph>
 				</S.ActiveDetails>
 				<S.ActiveDetails>
-					<p>{active.weather[0].description}</p>
-					<p>{active.clouds}% Cloudiness</p>
+					<Paragraph>{active.weather[0].description}</Paragraph>
+					<Paragraph>{active.clouds}% Cloudiness</Paragraph>
 				</S.ActiveDetails>
 			</S.ActiveWrapper>
 
@@ -47,19 +47,22 @@ const Hourly = ({ data }) => {
 								onClick={() => setActive(hour)}
 							>
 								<S.DateTime>
-									<S.HourlyDate>
+									<Paragraph weak>
 										{convertUnixTime(hour.dt, "date")}
-									</S.HourlyDate>
-									<S.HourlyTime>
+									</Paragraph>
+									<Paragraph strong>
 										{convertUnixTime(hour.dt, "time")}
-									</S.HourlyTime>
+									</Paragraph>
 								</S.DateTime>
-								<S.Temperature>{round(hour.temp)}&deg;</S.Temperature>
+								<WeatherIcon condition={hour.weather[0].icon} />
+								<Temperature shadow size="1.5" bold>
+									{round(hour.temp)}&deg;
+								</Temperature>
 							</S.HourCard>
 						);
 					})}
 			</S.HourCards>
-		</S.Hourly>
+		</>
 	);
 };
 
