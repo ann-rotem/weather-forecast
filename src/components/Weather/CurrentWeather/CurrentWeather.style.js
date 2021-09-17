@@ -1,37 +1,36 @@
 import styled from "styled-components";
+import { breakpoints } from "utils/constants/breakpoints";
+import { Temperature, IconWrapper } from "../Weather.style";
 
 export const CurrentWeather = styled.div`
-	color: ${({ theme }) => theme.text};
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr 1fr 2fr;
-	max-height: 18rem;
+	grid-template-columns: auto 1fr;
+	grid-template-columns: auto fit-content(13rem);
+	grid-template-rows: repeat(auto-fit, minmax(4rem, 1fr));
+	gap: 0 1rem;
 	grid-template-areas:
-		"temp       temp"
-		"icon    details"
-		"icon details";
-	gap: 0.5rem;
-	padding: 0.5rem;
+		"temp icon"
+		"details icon";
+	padding: 1rem;
 `;
 
-export const Temp = styled.h2`
+export const CurrentTemp = styled(Temperature)`
 	grid-area: temp;
-	font-size: 5rem;
-	text-align: center;
-	font-weight: 800;
-	color: ${({ theme }) => theme.textStrong};
-	text-shadow: ${({ theme }) => theme.textShadow};
+	font-size: 1.5em;
 `;
 
-export const Icon = styled.div`
+export const Icon = styled(IconWrapper)`
 	grid-area: icon;
-	display: flex;
-	justify-content: center;
+	flex-direction: column;
 	align-items: center;
-	fill: ${({ theme }) => theme.icon};
+	height: auto;
 
 	svg {
-		filter: drop-shadow(${({ theme }) => theme.shadow});
+		max-width: 100%;
+	}
+
+	@media only screen and (min-width: ${breakpoints.lg}px) {
+		align-items: flex-end;
 	}
 `;
 
@@ -39,11 +38,8 @@ export const Details = styled.div`
 	grid-area: details;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
-	p {
-		//padding: 0.2rem 0;
-		font-size: 1rem;
-		font-weight: 300;
-		//line-height: 1.5;
-	}
+	justify-content: flex-end;
+	font-size: 1em;
+	font-weight: 300;
+	line-height: 2;
 `;
