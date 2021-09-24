@@ -6,8 +6,6 @@ export const LogoWrapper = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	max-height: 100%;
-	//max-width: 60%;
-	line-height: 1;
 
 	svg {
 		height: 100%;
@@ -35,8 +33,8 @@ export const LogoText = styled.div`
 	h1 {
 		font-size: 1.5em;
 		font-weight: 800;
-		text-shadow: ${({ theme }) => theme.textShadow};
-		color: ${({ theme }) => theme.primaryColor};
+		text-shadow: -2px 1px 0 rgba(20, 20, 20, 0.2);
+		color: ${({ theme }) => theme.primary};
 	}
 	span {
 		font-weight: 500;
