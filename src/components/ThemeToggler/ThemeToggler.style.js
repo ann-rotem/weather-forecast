@@ -16,6 +16,12 @@ export const Toggler = styled.button`
 			? "linear-gradient(#15082c, #27135c, #3d196d)"
 			: "linear-gradient(to bottom right, #0b5466, #4ea8cc, #60cfee)"};
 
+	&:focus,
+	&:focus-visible {
+		border: none;
+		outline: 1px solid ${({ theme }) => theme.primaryColor};
+	}
+
 	@media only screen and (min-width: ${breakpoints.lg}px) {
 		margin: 0 auto;
 	}
