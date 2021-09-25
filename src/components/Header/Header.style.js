@@ -1,13 +1,12 @@
 import styled from "styled-components/macro";
 import { breakpoints } from "utils/constants/breakpoints";
+import { GlassEffect } from "GlobalStyle";
 
 export const Header = styled.header`
+	${GlassEffect}
 	grid-area: header;
 	display: flex;
-	background: ${({ theme }) => theme.backgroundContrast};
 	padding: 0 1rem;
-	box-shadow: ${({ theme }) => theme.shadow};
-	backdrop-filter: blur(0.5rem);
 
 	@media only screen and (min-width: ${breakpoints.sm}px) {
 		padding: 0.5rem 2rem;
