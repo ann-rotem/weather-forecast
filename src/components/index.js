@@ -1,6 +1,7 @@
 export { default as CurrentLocation } from "./CurrentLocation/CurrentLocation";
 export { default as Footer } from "./Footer/Footer";
 export { default as Header } from "./Header/Header";
+export { default as Hero } from "./Hero/Hero";
 export { default as Info } from "./Info/Info";
 export { default as Logo } from "./Logo/Logo";
 export { default as Main } from "./Main/Main";
