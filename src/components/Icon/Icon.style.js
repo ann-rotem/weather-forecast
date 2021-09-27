@@ -1,25 +1,17 @@
-import React, { forwardRef } from "react";
-import styled, { css } from "styled-components";
+import { forwardRef } from "react";
+import styled, { css } from "styled-components/macro";
 
 const sizesToNum = {
 	sm: 0.5,
 	md: 1,
 	lg: 2,
-	xl: 4,
+	xl: 3,
 	xxl: 6,
 };
 
 const colorCss = (props) => css`
-	fill: ${(props) => props.color || `inherit`};
-	stroke: ${(props) => props.color || `inherit`};
-	g {
-		fill: inherit;
-		stroke: inherit;
-	}
-	path {
-		fill: inherit;
-		stroke: inherit;
-	}
+	fill: ${(props) => props.color};
+	stroke: ${(props) => props.color};
 `;
 
 const Svg = forwardRef(({ size, color, ...rest }, ref) => (
@@ -51,7 +43,8 @@ const Icon = styled(Svg)`
         height: ${sizeNum}rem;
     `;
 	}}
-	${({ color }) => color !== "plain" && colorCss()}
+	${(props) => (props.color ? props.color : colorCss())}
+	padding: ${({ padding }) => `${padding}em` || 0};
 `;
 
 export { Icon };
