@@ -15,7 +15,7 @@ export const Header = styled.header`
 	@media only screen and (min-width: ${breakpoints.lg}px) {
 		flex-direction: column;
 		justify-content: space-between;
-		padding: 0.5rem;
+		padding: 2rem 0.5rem;
 	}
 `;
 export const HeaderMain = styled.div`
