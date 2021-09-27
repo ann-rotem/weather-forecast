@@ -25,7 +25,7 @@ export const Links = styled.div`
 export const Link = styled.a`
 	display: inline-flex;
 	align-items: center;
-	fill: ${({ theme }) => theme.textWeak};
+	color: ${({ theme }) => theme.textStrong};
 
 	svg {
 		filter: drop-shadow(${({ theme }) => theme.textShadow});
