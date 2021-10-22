@@ -1,29 +1,24 @@
-import styled, { css } from "styled-components";
-import { breakpoints } from "utils/constants/breakpoints";
+import styled from "styled-components";
 
 export const Toggler = styled.button`
 	display: inline-block;
+	box-sizing: content-box;
 	position: relative;
 	width: 3rem;
 	height: 1.5rem;
 	overflow: hidden;
-	border: none;
+	border: 1px solid ${({ theme }) => theme.colors.border.primary};
 	background: transparent;
 	border-radius: 0.75rem;
 	cursor: pointer;
 	background: ${({ theme }) =>
-		theme.name === "dark"
+		theme.mode === "dark"
 			? "linear-gradient(#15082c, #27135c, #3d196d)"
 			: "linear-gradient(to bottom right, #0b5466, #4ea8cc, #60cfee)"};
 
 	&:focus,
 	&:focus-visible {
-		border: none;
-		outline: 1px solid ${({ theme }) => theme.primaryColor};
-	}
-
-	@media only screen and (min-width: ${breakpoints.lg}px) {
-		margin: 0 auto;
+		outline: 2px solid ${({ theme }) => theme.colors.status.focus};
 	}
 `;
 
@@ -33,25 +28,25 @@ export const Switch = styled.span`
 	z-index: 1;
 	overflow: hidden;
 	top: 0.15rem;
-	left: ${({ theme }) => (theme.name === "dark" ? "0.15rem" : "1.7rem")};
+	left: ${({ theme }) => (theme.mode === "dark" ? "0.15rem" : "1.7rem")};
 	width: 1.2rem;
 	height: 1.2rem;
 	border-radius: 0.75rem;
 	background: ${({ theme }) =>
-		theme.name === "dark" ? "#f5f0cf" : "#f3ca58"};
+		theme.mode === "dark" ? "#f5f0cf" : "#f3ca58"};
 	box-shadow: ${({ theme }) =>
-		theme.name === "dark"
-			? "inset -3px 1px 3px #e7e18c, 0 0 1px 0.15rem rgba(196, 194, 200, 0.2)"
-			: "inset -3px 1px 3px #dda96f, 0 0 1px 0.1rem rgba(245, 213, 127, 0.4)"};
+		theme.mode === "dark"
+			? "inset -3px 1px 3px #e7e18c, 0 0 1px 2px rgba(196, 194, 200, 0.2)"
+			: "inset -3px 1px 3px #dda96f, 0 0 1px 1px rgba(245, 213, 127, 0.2)"};
 	transition: all 250ms ease-in;
-	${({ theme }) => theme.name === "dark" && css``}
+
 	&::before,
-			&::after {
+	&::after {
 		content: "";
 		position: absolute;
 		background: ${({ theme }) =>
-			theme.name === "dark" ? "rgba(190, 190, 190, 0.3)" : "transparent"};
-		box-shadow: inset 1px -1px 0px ${({ theme }) => (theme.name === "dark" ? "rgba(180, 180, 180, 0.2)" : "transparent")};
+			theme.mode === "dark" ? "rgba(190, 190, 190, 0.3)" : "transparent"};
+		box-shadow: inset 1px -1px 0px ${({ theme }) => (theme.mode === "dark" ? "rgba(180, 180, 180, 0.2)" : "transparent")};
 	}
 	&:before {
 		height: 0.35rem;
