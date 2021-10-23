@@ -1,34 +1,22 @@
 import styled from "styled-components/macro";
-import { breakpoints } from "utils/constants/breakpoints";
-
-export const SearchSection = styled.section`
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	width: 100%;
-	max-width: 22rem;
-	margin: 1.5rem 0;
-
-	@media only screen and (min-width: ${breakpoints.lg}px) {
-		height: 5rem;
-		padding: 1rem 0;
-		margin: 0;
-	}
-`;
 
 export const Form = styled.form`
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	box-shadow: ${({ theme }) => theme.shadow};
-	background: ${({ theme }) => theme.backgroundPrimary};
-	backdrop-filter: blur(0.5rem);
-	border-radius: 1.5rem;
 	height: 100%;
-	border: 1px solid ${({ theme }) => theme.backgroundPrimary};
+	align-items: center;
+	background: ${({ theme }) => theme.colors.background.primary};
+	//backdrop-filter: blur(1rem);
+	border: 1px solid ${({ theme }) => theme.colors.border.primary};
+	border-radius: 2rem;
+	box-shadow: ${({ theme }) => theme.elevation.small};
 
 	&:focus-within {
-		border: 1px solid ${({ theme }) => theme.primaryColor};
+		outline: 1px solid ${({ theme }) => theme.colors.status.focus};
+	}
+
+	@media only screen and (min-width: ${({ theme }) =>
+			theme.breakpoints.laptop}) {
+		height: 2.5rem;
 	}
 `;
 
@@ -45,50 +33,58 @@ export const Label = styled.label`
 export const Input = styled.input`
 	display: inline-flex;
 	font-size: 1rem;
-	color: ${({ theme }) => theme.text};
-	background: transparent;
+	padding: 0.5rem 0 0.5rem 1rem;
+	color: ${({ theme }) => theme.colors.text.primary};
 	border: none;
-	border-radius: 1.5rem 0 0 1.5rem;
-	padding: 1rem;
-	height: 100%;
+	border-radius: 2rem 0 0 2rem;
+	background: transparent;
 
 	&::placeholder {
-		color: ${({ theme }) => theme.textWeak};
-		font-family: "Assistant", sans-serif;
+		color: ${({ theme }) => theme.colors.text.weak};
 		font-weight: 300;
+
+		font-style: italic;
 	}
 
 	&:focus,
-	&:focus-within,
 	&:focus-visible {
 		outline: none;
 	}
-`;
 
-const Button = styled.button`
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	background: ${({ theme }) => theme.backgroundPrimary};
-	fill: ${({ theme }) => theme.text};
-	transition: all 250ms ease-in-out;
-	border: none;
-
-	&:hover,
-	&:focus {
-		background: ${({ theme }) => theme.text};
-		fill: ${({ theme }) => theme.backgroundPrimary};
-		outline: none;
+	@media only screen and (min-width: ${({ theme }) =>
+			theme.breakpoints.laptop}) {
+		padding: 0.2rem 0 0.2rem 1rem;
 	}
 `;
 
-export const SearchButton = styled(Button)`
-	border-radius: 0 1.5rem 1.5rem 0;
-	padding: 0 0.7rem 0 0.3rem;
+export const SearchButton = styled.button`
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: 0 2rem 2rem 0;
+	padding: 0 0.7rem 0 0.2rem;
 	height: 100%;
-`;
+	background: transparent;
+	color: ${({ theme }) => theme.icon.colors.primary};
 
-export const CurrentLocation = styled(Button)`
-	border-radius: 50%;
-	padding: 0.5rem;
+	svg {
+		transition: 250ms transform ease-in-out, 250ms filter ease-in-out;
+		filter: drop-shadow(${({ theme }) => theme.icon.elevation.small});
+	}
+
+	&:hover,
+	&:focus,
+	&:focus-visible {
+		svg {
+			transform: scale(1.2);
+			filter: drop-shadow(${({ theme }) => theme.icon.elevation.medium});
+		}
+	}
+
+	&:focus,
+	&:focus-visible {
+		outline: none;
+	}
 `;
