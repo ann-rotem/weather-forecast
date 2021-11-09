@@ -5,8 +5,8 @@ export const Header = styled.header`
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	height: 3.5rem;
-	padding: 0 var(--horizontal-padding);
+	height: var(--header-height);
+	padding: 0.5rem ${({ theme }) => theme.spacing.section.x};
 `;
 
 export const HeaderMain = styled.div`
