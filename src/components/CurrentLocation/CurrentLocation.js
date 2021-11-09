@@ -1,5 +1,5 @@
 import * as S from "./CurrentLocation.style";
-import { TargetIcon } from "components/Icon";
+import { Icon } from "components/Icon";
 
 const CurrentLocation = ({ handleClick }) => {
 	return (
@@ -9,7 +9,7 @@ const CurrentLocation = ({ handleClick }) => {
 				onClick={handleClick}
 				aria-label="Current location"
 			>
-				<TargetIcon />
+				<Icon name="target" />
 			</S.CurrentLocation>
 		</S.Wrapper>
 	);

@@ -1,5 +1,5 @@
 import * as S from "./Footer.style";
-import { GithubIcon } from "components/Icon";
+import { Icon } from "components/Icon";
 
 const Footer = () => {
 	return (
@@ -23,7 +23,7 @@ const Footer = () => {
 					href="https://github.com/ann-rotem"
 					rel="noreferrer"
 				>
-					<GithubIcon size="lg" />
+					<Icon name="github" size="lg" />
 				</S.Link>
 			</S.Links>
 		</S.Footer>

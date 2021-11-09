@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import * as S from "./Search.style";
-import { SearchIcon } from "components/Icon";
+import { Icon } from "components/Icon";
 
 const Search = ({ handleSearch }) => {
 	const [inputValue, setInputValue] = useState("");
@@ -34,7 +34,7 @@ const Search = ({ handleSearch }) => {
 				autoComplete="off"
 			/>
 			<S.SearchButton role="button" type="submit" aria-label="Search button">
-				<SearchIcon size="lg" />
+				<Icon name="search" size="lg" />
 			</S.SearchButton>
 		</S.Form>
 	);

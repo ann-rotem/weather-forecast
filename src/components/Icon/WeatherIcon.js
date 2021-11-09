@@ -1,5 +1,3 @@
-import React from "react";
-import { SearchIcon } from ".";
 import {
 	SunIcon,
 	MoonIcon,
@@ -51,7 +49,7 @@ const WeatherIcon = ({ condition, size }) => {
 		case "50n": // mist night
 			return <MoonIcon size={size} />;
 		default:
-			return <SearchIcon size={size} />;
+			return <SunCloudIcon size={size} />;
 	}
 };
 
