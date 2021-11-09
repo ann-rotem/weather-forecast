@@ -9,24 +9,24 @@ import {
 	WindIcon,
 } from "./uiIcons";
 
-const Icon = ({ name, props, ref }) => {
+const Icon = ({ name, size, props, ref }) => {
 	switch (name) {
 		case "github":
-			return <GithubIcon props={props} ref={ref} />;
+			return <GithubIcon props={props} size={size} ref={ref} />;
 		case "humidity":
-			return <HumidityIcon props={props} ref={ref} />;
+			return <HumidityIcon size={size} props={props} ref={ref} />;
 		case "location-pin":
-			return <LocationIcon props={props} ref={ref} />;
+			return <LocationIcon size={size} props={props} ref={ref} />;
 		case "search":
-			return <SearchIcon props={props} ref={ref} />;
+			return <SearchIcon size={size} props={props} ref={ref} />;
 		case "sunrise":
-			return <SunriseIcon props={props} ref={ref} />;
+			return <SunriseIcon size={size} props={props} ref={ref} />;
 		case "sunset":
-			return <SunsetIcon props={props} ref={ref} />;
+			return <SunsetIcon size={size} props={props} ref={ref} />;
 		case "target":
-			return <TargetIcon props={props} ref={ref} />;
+			return <TargetIcon size={size} props={props} ref={ref} />;
 		case "wind":
-			return <WindIcon props={props} ref={ref} />;
+			return <WindIcon size={size} props={props} ref={ref} />;
 		default:
 			return null;
 	}
