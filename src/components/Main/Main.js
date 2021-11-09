@@ -16,8 +16,8 @@ const Main = () => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 
-	const API_KEY = "06c84ab4e35ae12ff067ec477be417ed";
-	const BASE_URL = "https://api.openweathermap.org/";
+	const API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
+	const BASE_URL = process.env.REACT_APP_OPEN_WEATHER_URL;
 
 	// get current weather, hourly and daily forecast from API by coordinates
 	const fetchWeatherByCoords = async (lat, lon) => {
