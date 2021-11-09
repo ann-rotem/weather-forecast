@@ -8,6 +8,11 @@ const font = {
 		medium: "16px",
 		large: "20px",
 	},
+	weight: {
+		light: "300",
+		normal: "500",
+		bold: "800",
+	},
 };
 
 const breakpoints = {
@@ -15,6 +20,17 @@ const breakpoints = {
 	tablet: "768px",
 	laptop: "1024px",
 	desktop: "1440px",
+};
+
+const spacing = {
+	xSmall: "0.25rem",
+	small: "0.5rem",
+	medium: "1rem",
+	large: "2rem",
+	section: {
+		y: "1vh",
+		x: "4vw",
+	},
 };
 
 export const themes = {
@@ -25,13 +41,13 @@ export const themes = {
 			text: {
 				primary: "rgb(68, 68, 70)",
 				weak: "rgb(138, 137, 137)",
-				strong: "rgb(35, 35, 35)",
+				strong: "rgb(50, 45, 40)",
 				link: "#3671b6",
 			},
 			background: {
 				primary: "rgba(255, 255, 255, 0.6)",
-				secondary: "rgba(235, 220, 225, 0.6)",
-				contrast: "rgba(0,0,0,0.2)",
+				secondary: "rgba(200, 205, 215, 0.6)",
+				contrast: "rgba(0, 5, 15, 0.2)",
 			},
 			border: {
 				primary: "#999",
@@ -43,6 +59,10 @@ export const themes = {
 				error: "#b64444",
 				warning: "#FFAA15",
 				success: "#008567",
+			},
+			chart: {
+				datasetY: "#d8a548",
+				datasetY1: "#3671b6",
 			},
 		},
 		elevation: {
@@ -62,6 +82,7 @@ export const themes = {
 		},
 		font,
 		breakpoints,
+		spacing,
 	},
 	dark: {
 		mode: "dark",
@@ -89,6 +110,10 @@ export const themes = {
 				warning: "#F7E464",
 				success: "#7DD892",
 			},
+			chart: {
+				datasetY: "#fdc692",
+				datasetY1: "#c8a0f8",
+			},
 		},
 		elevation: {
 			small: "0px 2px 4px #0000003d",
@@ -107,51 +132,6 @@ export const themes = {
 		},
 		font,
 		breakpoints,
+		spacing,
 	},
-};
-
-export const darkTheme = {
-	name: "dark",
-	backgroundImage: `url(${nightBackground})`,
-	primary: "#fdc692",
-	secondary: "rgb(23, 23, 23)",
-	//background: "rgba(38, 48, 64, 0.6)",
-	background: "rgba(30,30,30,0.5)",
-	backgroundSecondary: "rgba(64, 75, 92, 0.6)",
-	backgroundContrast: "rgba(255, 255, 255, 0.2)",
-	textStrong: "#fff",
-	text: "#C0CADC",
-	textWeak: "#606B7D",
-	border: "#7887A1",
-	borderStrong: "#AFBCD2",
-	borderWeak: "#606B7D",
-	success: "#17eba0",
-	warning: "#fc5a5a",
-	shadowWeak: "0px 2px 4px #0000003d",
-	shadow: "0px 6px 12px #0000005c",
-	shadowStrong: "0px 12px 24px #0000007a",
-	shadowInset: "inset 0px 6px 12px rgba(130, 130, 130, 0.2)",
-};
-
-export const lightTheme = {
-	name: "light",
-	backgroundImage: `url(${dayBackground})`,
-	primary: "#3671b6",
-	secondary: "rgb(210, 240, 240)",
-	//background: "rgba(240,240,240, 0.6)",
-	background: "rgba(255, 255, 255, 0.4)",
-	backgroundSecondary: "rgba(235, 220, 225, 0.6)",
-	backgroundContrast: "rgba(0,0,0,0.2)",
-	text: "rgb(68, 68, 70)",
-	textStrong: "rgb(10, 10, 10)",
-	textWeak: "rgb(187, 187, 187)",
-	border: "#999",
-	borderStrong: "#666",
-	borderWeak: "#BBB",
-	success: "#008567",
-	warning: "#b64444",
-	shadowWeak: "0px 2px 4px #0000001f",
-	shadow: "0px 6px 12px #0000001f",
-	shadowStrong: "0px 12px 24px #0000003d",
-	shadowInset: "inset 6px 0px 12px rgba(250, 250, 250, 0.2)",
 };
