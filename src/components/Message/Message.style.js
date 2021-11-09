@@ -1,18 +1,16 @@
 import styled from "styled-components/macro";
-import { GlassEffect } from "GlobalStyle";
 
 export const MessageWrapper = styled.section`
-	${GlassEffect}
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
 	text-align: center;
 	padding: 1.5rem;
-
+	margin: auto 0;
 	border-radius: 2rem;
-	width: min(30rem, calc(80% + 6rem));
-	width: min(25rem, calc(80% + 6rem));
+	width: 20rem;
+	background: ${({ theme }) => theme.colors.background.primary};
 `;
 
 export const Heading = styled.h2`
