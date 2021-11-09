@@ -1,46 +1,41 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useGetWeatherByCoords = () => {
-	const [coords, setCoords] = useState(null);
-	const [currentWeather, setCurrentWeather] = useState(null);
-	const [hourlyWeather, setHourlyWeather] = useState(null);
-	const [dailyWeather, setDailyWeather] = useState(null);
+const useGetWeatherByCoords = (latitude, longitude) => {
+	const [data, setData] = useState(null);
 	const [loading, setLoading] = useState(null);
 	const [error, setError] = useState(null);
+	const [isRequested, setIsRequested] = useState(false);
+
+	const requestWeather = () => setIsRequested(true);
 
 	useEffect(() => {
-		if (!coords) return;
-		// Set initial state
+		if (!isRequested) return;
 		setLoading(true);
-		setError(null);
-		setCurrentWeather(null);
-		setHourlyWeather(null);
-		setDailyWeather(null);
 		axios
 			.get(
-				`${process.env.REACT_APP_OPEN_WEATHER_URL}data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&exclude=minutely,alerts&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`
+				`${process.env.REACT_APP_OPEN_WEATHER_URL}data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=minutely,alerts&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`
 			)
 			.then((response) => {
+				setData(response.data);
 				setLoading(false);
-				setCurrentWeather(response.data.current);
-				setHourlyWeather(response.data.hourly);
-				setDailyWeather(response.data.daily);
+				setError(null);
 			})
-			.catch((error) => {
+			.catch((err) => {
+				console.log(err.toJSON());
+				setError(err);
 				setLoading(false);
-				console.log(error);
-				setError(error);
 			});
-	}, [coords]);
+		return () => {
+			setIsRequested(false);
+		};
+	}, [isRequested, latitude, longitude]);
 
 	return {
-		currentWeather,
-		hourlyWeather,
-		dailyWeather,
+		data,
 		loading,
 		error,
-		setCoords,
+		requestWeather,
 	};
 };
 
