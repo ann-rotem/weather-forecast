@@ -35,6 +35,9 @@ export const convertUnixTime = (unix, format) => {
 		options.day = "2-digit";
 		options.month = "2-digit";
 	}
+	if (format === "weekday") {
+		options.weekday = "short";
+	}
 	if (format === "date, weekday") {
 		options.weekday = "short";
 		options.month = "2-digit";
@@ -43,6 +46,9 @@ export const convertUnixTime = (unix, format) => {
 	if (format === "time") {
 		options.hour = "2-digit";
 		options.minute = "2-digit";
+	}
+	if (format === "hour") {
+		options.hour = "2-digit";
 	}
 
 	return new Intl.DateTimeFormat("default", options).format(unix * 1000);
