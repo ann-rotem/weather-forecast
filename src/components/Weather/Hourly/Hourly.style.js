@@ -1,100 +1,134 @@
-import styled from "styled-components/macro";
-import { breakpoints } from "utils/constants/breakpoints";
+import styled, { keyframes } from "styled-components/macro";
+import { WeatherCard, ContentWrapper } from "../Weather.style";
 
-export const Column = styled.div`
-	display: flex;
-	flex-direction: column;
-`;
+export const Hourly = styled(WeatherCard)`
+	grid-area: hourly;
+	display: block;
+	width: 100%;
+	max-width: 30rem;
 
-export const Row = styled.div`
-	display: flex;
-	justify-content: space-between;
-`;
-
-export const ActiveWrapper = styled(Column)`
-	font-size: 1.5rem;
-	padding: 1rem;
-	position: relative;
-
-	@media only screen and (min-width: ${breakpoints.lg}px) {
-		padding: 1rem 2rem;
+	@media only screen and (min-width: ${({ theme }) =>
+			theme.breakpoints.laptop}) {
+		overflow: hidden;
+		max-width: 36rem;
 	}
 `;
 
-const ActiveColumn = styled(Column)`
-	width: 45%;
-`;
-export const ActiveDateTime = styled(ActiveColumn)``;
-
-export const ActiveTemp = styled(ActiveColumn)`
-	align-items: flex-end;
-	line-height: 1;
-	margin-bottom: 1rem;
-	h2 {
-		font-size: 2em;
-	}
-	p {
-		font-size: 0.75em;
-	}
-`;
-export const ActiveDetails = styled(Row)`
-	p {
-		font-size: 1rem;
-		font-weight: 300;
-		color: ${({ theme }) => theme.textStrong};
-		text-transform: capitalize;
-	}
-	@media only screen and (min-width: ${breakpoints.lg}px) {
-		padding: 0 1rem;
-	}
+export const Wrapper = styled(ContentWrapper)`
+	height: 100%;
+	width: 100%;
 `;
 
-export const HourCards = styled.div`
+export const Legend = styled.div`
+	font-size: 16px;
 	display: grid;
-	grid-template-rows: auto;
-	grid-auto-columns: auto;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: repeat(2, 1fr);
 	grid-auto-flow: column;
-	overflow: auto;
-	margin: 0.5rem;
+	gap: 0.5em 2.5em;
+	width: fit-content;
+	margin: 0 auto;
+	padding: 0.5em;
 `;
 
-export const HourCard = styled(Column)`
-	justify-content: space-around;
+export const LegendItem = styled.div`
+	display: flex;
+	gap: 0.5em;
 	align-items: center;
-	background: ${(props) =>
-		props.active
-			? props.theme.backgroundPrimary
-			: props.theme.backgroundContrast};
-	padding: 0.2rem 0.5rem;
-	border-radius: 0.7rem;
-	margin: 0.3rem;
-	width: 5rem;
-	font-size: 1rem;
-	cursor: ${(props) => (props.active ? "default" : "pointer")};
-	transition: all 250ms linear;
+	cursor: pointer;
+`;
 
-	svg {
-		margin: 0.3rem 0;
-		width: 60%;
-		filter: drop-shadow(-2px -3px 1px rgba(50, 50, 50, 0.2));
+const checkStart = keyframes`
+	0% {height: 0;}
+	100% {height: 50%;}
+`;
+
+const checkEnd = keyframes`
+	0% {height: 0;}
+	50% {height: 0;}
+	100% {height: 80%;}
+`;
+
+export const Checkbox = styled.input`
+	-webkit-appearance: none;
+	appearance: none;
+	display: inline-block;
+	position: relative;
+	width: 20px;
+	height: 20px;
+	background: transparent;
+	background: ${({ theme }) => theme.colors.background.primary};
+	border: 1px solid ${({ theme }) => theme.colors.border.primary};
+	border-radius: 15%;
+	color: ${({ theme }) => theme.colors.text.strong};
+	cursor: pointer;
+
+	&::before,
+	&::after {
+		content: "";
+		display: inline-block;
+		position: absolute;
+		height: 0;
+		width: 2px;
+		border-radius: 2px;
+		background: ${({ theme }) => theme.colors.text.strong};
+		transform-origin: left top;
 	}
 
-	&:hover {
-		background: ${({ theme }) => theme.backgroundPrimary};
-		opacity: ${(props) => (props.active ? "1" : "0.7")};
+	&::before {
+		top: 51%;
+		left: 12%;
+		transform: rotate(-45deg);
+	}
+
+	&::after {
+		top: 85%;
+		left: 50%;
+		transform: rotate(-145deg);
+	}
+
+	&:checked&::before {
+		height: 50%;
+		animation: ${checkStart} 200ms ease forwards;
+	}
+
+	&:checked&::after {
+		height: 80%;
+		animation: ${checkEnd} 400ms ease forwards;
 	}
 `;
 
-export const DateTime = styled(Column)`
-	text-align: center;
+export const LabelStyle = styled.span`
+	display: inline-flex;
+	width: 24px;
+	margin-left: 6px;
+	border-bottom: 1px solid green;
+	border-bottom-width: ${(props) => (props.dataset === "y" ? "3" : "1")}px;
+	border-bottom-style: ${(props) => (props.dashed ? "dashed" : "solid")};
+	border-bottom-color: ${(props) =>
+		props.dataset === "y"
+			? props.theme.colors.chart.datasetY
+			: props.theme.colors.chart.datasetY1};
 `;
 
-export const HourlyDate = styled.p`
-	color: ${({ theme }) => theme.textWeak};
-	font-size: 0.8em;
+export const LabelText = styled.label`
+	display: inline-flex;
+	flex-grow: 1;
+	width: auto;
+	cursor: pointer;
 `;
 
-export const HourlyTime = styled.p`
-	font-size: 1em;
-	color: ${({ theme }) => theme.textStrong};
+export const Chart = styled.div`
+	position: relative;
+	width: 100%;
+	font-size: 14px;
+	line-height: 1;
+	margin: 0 auto;
+	max-width: 34rem;
+	height: 15rem;
+
+	@media only screen and (min-width: ${({ theme }) =>
+			theme.breakpoints.laptop}) {
+		height: 12rem;
+	}
 `;
