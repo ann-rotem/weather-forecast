@@ -1,9 +1,10 @@
-import { createGlobalStyle, css } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     :root {
-        --vertical-padding: 2vh;
-        --horizontal-padding: 4vw;
+        --header-height: 3.5rem;
+        --footer-height: 2.5rem;
+        --main-height: calc(100vh - var(--header-height) - var(--footer-height));
     }
 
     * {
@@ -20,6 +21,7 @@ export const GlobalStyle = createGlobalStyle`
         background-attachment: fixed;
         height: 100vh;
         width: 100vw;
+        
 
         @media only screen and (min-width: 320px) {
             font-size: calc(14px + 4 * ((100vw - 320px) / 1080));
@@ -36,14 +38,7 @@ export const GlobalStyle = createGlobalStyle`
         color: ${({ theme }) => theme.colors.text.primary};
         line-height: 1.5;
         overflow-x: hidden;
-    }
-
-    #root {
-        display: grid;
-        grid-template-rows: 3.5rem 1fr 3.5rem;
-        grid-template-columns: 100vw;
-        height: 100vh;
-        width: 100%;
+        position: relative;
     }
 
     h1 {
@@ -56,25 +51,18 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     ::-webkit-scrollbar {
-    width: 0.5rem;
-}
+        width: 0.5rem;
+    }
 
-::-webkit-scrollbar-track {
-    
-    background-color: ${({ theme }) => theme.colors.background.primary};
-    background-color: transparent;
-    border-radius: 0.5rem;
-}
+    ::-webkit-scrollbar-track {
+        background-color: ${({ theme }) => theme.colors.background.primary};
+        background-color: transparent;
+        border-radius: 0.5rem;
+    }
 
-::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.text.primary};
-    border-radius: 0.5rem;
-}
+    ::-webkit-scrollbar-thumb {
+        background-color: ${({ theme }) => theme.colors.text.primary};
+        border-radius: 0.5rem;
+    }
 
-`;
-
-export const GlassEffect = css`
-	background: ${({ theme }) => theme.colors.background.contrast};
-	backdrop-filter: blur(0.3rem);
-	box-shadow: ${({ theme }) => theme.elevation.medium};
 `;
