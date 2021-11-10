@@ -6,12 +6,12 @@ export const MainWrapper = styled.main`
 	align-items: center;
 	width: 100%;
 	min-height: var(--main-height);
-	//height: 100%;
+	height: 100%;
 	padding: 0 ${({ theme }) => theme.spacing.section.x};
 
 	@media only screen and (min-width: ${({ theme }) =>
-			theme.breakpoints.desktop}) {
-		//height: auto;
+			theme.breakpoints.laptop}) {
+		//height: calc(var(--main-height + 3rem));
 	}
 `;
 
@@ -23,10 +23,4 @@ export const SearchSection = styled.section`
 	padding: 1rem 0;
 	justify-content: space-around;
 	align-items: center;
-
-	@media only screen and (min-width: ${({ theme }) =>
-			theme.breakpoints.laptop}) {
-		height: 3rem;
-		padding: 0;
-	}
 `;

@@ -12,7 +12,7 @@ export const HeroWrapper = styled.article`
 	align-items: center;
 	width: 100%;
 	max-width: 20rem;
-	margin: 1rem;
+	margin: auto;
 	padding: 1rem;
 	border-radius: 1rem;
 	background: ${({ theme }) => theme.colors.background.primary};

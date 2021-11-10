@@ -4,23 +4,24 @@ import { WeatherCard, ContentWrapper } from "../Weather.style";
 export const Hourly = styled(WeatherCard)`
 	grid-area: hourly;
 	display: block;
-	width: 100%;
-	max-width: 30rem;
+	width: 30rem;
+	max-width: 92vw;
 
 	@media only screen and (min-width: ${({ theme }) =>
 			theme.breakpoints.laptop}) {
-		overflow: hidden;
+		width: 100%;
 		max-width: 36rem;
+		align-self: end;
 	}
 `;
 
 export const Wrapper = styled(ContentWrapper)`
 	height: 100%;
 	width: 100%;
+	padding: 0.5em;
 `;
 
 export const Legend = styled.div`
-	font-size: 16px;
 	display: grid;
 	grid-template-rows: 1fr 1fr;
 	grid-template-columns: repeat(2, 1fr);

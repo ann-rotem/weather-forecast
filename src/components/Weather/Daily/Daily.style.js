@@ -3,38 +3,34 @@ import { WeatherCard, ContentWrapper } from "../Weather.style";
 
 export const Daily = styled(WeatherCard)`
 	grid-area: daily;
-	display: flex;
-	flex-direction: column;
-	overflow: hidden;
+	display: block;
+	background: transparent;
+	box-shadow: none;
+	padding: 0;
 
 	@media only screen and (min-width: ${({ theme }) =>
 			theme.breakpoints.laptop}) {
-		max-height: 100%;
+		//min-height: 100%;
+		//align-self: stretch;
 	}
 `;
 
-export const Wrapper = styled(ContentWrapper)`
-	gap: 0.1rem;
-	height: 100%;
-	flex-direction: column;
-	overflow-y: auto;
-	background: transparent;
-	box-shadow: none;
-	padding-right: 0.5rem;
-	border-radius: 0.5rem;
-`;
-
-export const Day = styled.div`
+export const Wrapper = styled(WeatherCard)`
 	display: flex;
 	flex-direction: column;
-	height: 100%;
-	width: 100%;
-	border-radius: 0.5rem;
-	margin-bottom: 0.2rem;
+	justify-content: space-between;
+	gap: 0.5em 0;
+	height: 40rem;
+`;
+
+export const Day = styled(ContentWrapper)`
+	overflow: hidden;
+	transition: all 300ms ease-out;
+	height: auto;
+	max-height: ${({ active }) => (active ? "100%" : "3em")};
+	flex: ${({ active }) => (active ? 3 : 1)};
 	background: ${(props) =>
-		props.index % 2 === 0
-			? props.theme.colors.background.contrast
-			: props.theme.colors.background.secondary};
+		props.index % 2 === 0 && props.theme.colors.background.contrast};
 `;
 
 export const Container = styled.div`

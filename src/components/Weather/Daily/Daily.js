@@ -17,8 +17,8 @@ const Daily = ({ data }) => {
 
 	return (
 		<S.Daily>
-			<Title>Daily Forecast</Title>
-			<S.Wrapper>
+			<S.Wrapper as="div">
+				<Title>Daily Forecast</Title>
 				{data &&
 					data.map((day, index) => (
 						<Day

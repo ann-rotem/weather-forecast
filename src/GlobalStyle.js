@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
     :root {
         --header-height: 3.5rem;
-        --footer-height: 2.5rem;
+        --footer-height: 3.5rem;
         --main-height: calc(100vh - var(--header-height) - var(--footer-height));
     }
 
@@ -23,13 +23,16 @@ export const GlobalStyle = createGlobalStyle`
         width: 100vw;
         
 
-        @media only screen and (min-width: 320px) {
-            font-size: calc(14px + 4 * ((100vw - 320px) / 1080));
+        @media only screen and (min-width: ${({ theme }) =>
+				theme.breakpoints.mobile}) {
+            font-size: calc(14px + 4 * ((100vw - ${({ theme }) =>
+					theme.breakpoints.mobile}) / 696));
             //calc([minimum font size] + ([maximum font size] - [minimum font size]) *
             //((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
         }
 
-         @media only screen and (min-width: 1440px) {
+         @media only screen and (min-width: ${({ theme }) =>
+				theme.breakpoints.laptop}) {
             font-size: 18px;
         }
     }

@@ -13,22 +13,20 @@ export const WeatherSection = styled.section`
 	align-items: start;
 	width: 100%;
 	max-width: 100vw;
-	//max-height: 100%;
-	gap: 1rem 0;
+	gap: 1rem;
 
 	@media only screen and (min-width: ${({ theme }) =>
 			theme.breakpoints.laptop}) {
 		grid-template-columns: 1fr 2fr;
-		grid-template-rows: 3rem auto 1fr;
+		grid-template-rows: 3rem 1fr auto;
 		grid-template-areas:
 			"info info"
-			"daily current "
+			"daily current"
 			"daily hourly";
 		gap: 1rem 0.5rem;
 		padding: 0 ${({ theme }) => theme.spacing.medium};
-		height: auto;
 		max-width: 70rem;
-		//overflow-y: auto;
+		margin: auto;
 	} ;
 `;
 
@@ -149,6 +147,7 @@ export const Info = styled.div`
 		flex-direction: row;
 		align-items: end;
 		gap: 1rem;
+		align-self: end;
 	}
 `;
 
