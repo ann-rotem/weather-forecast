@@ -22,7 +22,9 @@ const CurrentWeather = ({ data }) => {
 				<S.Detail>
 					<S.DetailIcon>
 						<Icon name="humidity" />
-						<p>Humidity</p>
+						<Text align="center" weight="light">
+							Humidity
+						</Text>
 					</S.DetailIcon>
 					<Text color="strong" size="1.1">
 						{data.humidity}%
@@ -31,7 +33,9 @@ const CurrentWeather = ({ data }) => {
 				<S.Detail>
 					<S.DetailIcon>
 						<Icon name="wind" />
-						<p>Wind</p>
+						<Text align="center" weight="light">
+							Wind
+						</Text>
 					</S.DetailIcon>
 					<Text color="strong" size="1.1">
 						{data.wind} m/s
@@ -40,7 +44,9 @@ const CurrentWeather = ({ data }) => {
 				<S.Detail>
 					<S.DetailIcon>
 						<Icon name="sunrise" />
-						<p>UVI</p>
+						<Text align="center" weight="light">
+							UV Index
+						</Text>
 					</S.DetailIcon>
 					<Text color="strong" size="1.1">
 						{data.uvi}
@@ -49,7 +55,9 @@ const CurrentWeather = ({ data }) => {
 				<S.Detail>
 					<S.DetailIcon>
 						<Icon name="sunset" />
-						<p>Dew Point</p>
+						<Text align="center" weight="light">
+							Dew Point
+						</Text>
 					</S.DetailIcon>
 					<Text color="strong" size="1.1">
 						{data.dew}&deg;

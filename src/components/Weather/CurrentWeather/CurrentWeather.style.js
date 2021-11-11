@@ -10,6 +10,8 @@ export const CurrentWeather = styled(WeatherCard)`
 		"title"
 		"wrapper1"
 		"wrapper2";
+	width: 22rem;
+	max-width: 92vw;
 
 	@media only screen and (min-width: ${({ theme }) =>
 			theme.breakpoints.laptop}) {
@@ -20,6 +22,7 @@ export const CurrentWeather = styled(WeatherCard)`
 			"title ."
 			"wrapper1 wrapper2";
 		gap: 0 1rem;
+		width: 100%;
 		max-width: 35rem;
 	}
 `;
@@ -43,12 +46,6 @@ export const Wrapper = styled(ContentWrapper)`
 		gap: 0 ${({ theme }) => theme.spacing.small};
 	}
 `;
-
-// export const Date = styled(Text)`
-// 	grid-area: date;
-// 	text-align: center;
-// 	padding-bottom: ${({ theme }) => theme.spacing.small};
-// `;
 
 export const Icon = styled(IconWrapper)`
 	grid-area: icon;
@@ -131,6 +128,7 @@ export const Detail = styled.div`
 	text-align: center;
 	font-weight: ${({ theme }) => theme.font.weight.light};
 	padding: ${({ theme }) => theme.spacing.small};
+	gap: 1em 0;
 
 	@media only screen and (min-width: ${({ theme }) =>
 			theme.breakpoints.laptop}) {
@@ -145,6 +143,9 @@ export const DetailIcon = styled.span`
 	display: inline-flex;
 	flex-direction: column;
 	height: 100%;
+	width: 100%;
+	align-items: center;
+	font-size: 0.9rem;
 
 	svg {
 		height: 100%;
@@ -157,6 +158,7 @@ export const DetailIcon = styled.span`
 			theme.breakpoints.laptop}) {
 		flex-direction: row;
 		align-items: center;
+		width: auto;
 		svg {
 			max-height: 2rem;
 			padding: ${({ theme }) => theme.spacing.xSmall};
