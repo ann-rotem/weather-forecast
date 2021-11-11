@@ -1,5 +1,13 @@
 import { convertUnixTime, round } from "./dateTime.helpers";
 
+const uviNumToString = (uvi) => {
+	if (uvi < 3) return "Low";
+	if (uvi >= 3 && uvi < 6) return "Moderate";
+	if (uvi >= 6 && uvi < 8) return "High";
+	if (uvi >= 8 && uvi < 11) return "Very high";
+	if (uvi >= 11) return "Extreme";
+};
+
 export const formatCurrentWeatherData = (data) => {
 	let formattedData = {
 		temp: round(data.temp),
@@ -10,8 +18,8 @@ export const formatCurrentWeatherData = (data) => {
 		precipitation: data.pop,
 		clouds: data.clouds,
 		wind: data.wind_speed,
-		uvi: data.uvi,
-		dew: data.dew_point,
+		uvi: uviNumToString(data.uvi),
+		dew: round(data.dew_point),
 		sunset: convertUnixTime(data.sunset, "time"),
 		sunrise: convertUnixTime(data.sunrise, "time"),
 	};
