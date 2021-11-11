@@ -23,12 +23,15 @@ export const Wrapper = styled(ContentWrapper)`
 
 export const Legend = styled.div`
 	display: grid;
-	grid-template-rows: 1fr 1fr;
-	grid-template-columns: repeat(2, 1fr);
-	grid-auto-flow: column;
-	gap: 0.5em 2.5em;
-	width: fit-content;
+	grid-template-columns: repeat(2, auto);
+	//grid-template-rows: repeat(auto-fill, minmax(2em, 1fr));
+	grid-auto-flow: row;
+	grid-auto-rows: auto;
+	justify-items: start;
 	margin: 0 auto;
+	gap: 0.5em 1em;
+	width: 100%;
+	max-width: 22em;
 	padding: 0.5em;
 `;
 
@@ -37,6 +40,8 @@ export const LegendItem = styled.div`
 	gap: 0.5em;
 	align-items: center;
 	cursor: pointer;
+	justify-content: space-between;
+	width: 100%;
 `;
 
 const checkStart = keyframes`
@@ -101,7 +106,7 @@ export const Checkbox = styled.input`
 
 export const LabelStyle = styled.span`
 	display: inline-flex;
-	width: 24px;
+	width: 1em;
 	margin-left: 6px;
 	border-bottom: 1px solid green;
 	border-bottom-width: ${(props) => (props.dataset === "y" ? "3" : "1")}px;
@@ -115,7 +120,6 @@ export const LabelStyle = styled.span`
 export const LabelText = styled.label`
 	display: inline-flex;
 	flex-grow: 1;
-	width: auto;
 	cursor: pointer;
 `;
 
