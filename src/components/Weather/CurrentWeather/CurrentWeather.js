@@ -43,7 +43,7 @@ const CurrentWeather = ({ data }) => {
 				</S.Detail>
 				<S.Detail>
 					<S.DetailIcon>
-						<Icon name="sunrise" />
+						<Icon name="uvi" />
 						<Text align="center" weight="light">
 							UV Index
 						</Text>
@@ -54,7 +54,7 @@ const CurrentWeather = ({ data }) => {
 				</S.Detail>
 				<S.Detail>
 					<S.DetailIcon>
-						<Icon name="sunset" />
+						<Icon name="dew-point" />
 						<Text align="center" weight="light">
 							Dew Point
 						</Text>

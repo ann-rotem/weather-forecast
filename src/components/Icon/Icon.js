@@ -1,4 +1,5 @@
 import {
+	DewPointIcon,
 	GithubIcon,
 	HumidityIcon,
 	LocationIcon,
@@ -6,11 +7,14 @@ import {
 	SunriseIcon,
 	SunsetIcon,
 	TargetIcon,
+	UviIcon,
 	WindIcon,
 } from "./uiIcons";
 
 const Icon = ({ name, size, props, ref }) => {
 	switch (name) {
+		case "dew-point":
+			return <DewPointIcon props={props} size={size} ref={ref} />;
 		case "github":
 			return <GithubIcon props={props} size={size} ref={ref} />;
 		case "humidity":
@@ -25,6 +29,8 @@ const Icon = ({ name, size, props, ref }) => {
 			return <SunsetIcon size={size} props={props} ref={ref} />;
 		case "target":
 			return <TargetIcon size={size} props={props} ref={ref} />;
+		case "uvi":
+			return <UviIcon size={size} props={props} ref={ref} />;
 		case "wind":
 			return <WindIcon size={size} props={props} ref={ref} />;
 		default:
