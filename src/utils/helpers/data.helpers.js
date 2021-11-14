@@ -55,7 +55,7 @@ export const formatDailyData = (data) => {
 			feels_like: round(day.feels_like.day),
 			description: day.weather[0].description,
 			humidity: day.humidity,
-			precipitation: day.pop,
+			precipitation: day.pop * 100,
 			clouds: day.clouds,
 			sunset: convertUnixTime(day.sunset, "time"),
 			sunrise: convertUnixTime(day.sunrise, "time"),
