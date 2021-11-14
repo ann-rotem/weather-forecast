@@ -24,6 +24,8 @@ export const Wrapper = styled(WeatherCard)`
 `;
 
 export const Day = styled(ContentWrapper)`
+	display: grid;
+	grid-template-rows: auto 1fr;
 	overflow: hidden;
 	transition: all 300ms ease-out;
 	height: auto;
@@ -31,6 +33,7 @@ export const Day = styled(ContentWrapper)`
 	flex: ${({ active }) => (active ? 3 : 1)};
 	background: ${(props) =>
 		props.index % 2 === 0 && props.theme.colors.background.contrast};
+	transition: all 300ms ease-in-out;
 `;
 
 export const Container = styled.div`
@@ -82,7 +85,7 @@ export const Expanded = styled(Container)`
 	flex-direction: column;
 	border-top: 1px solid ${({ theme }) => theme.colors.background.contrast};
 	width: 100%;
-	transition: max-height 1s ease-in-out;
+	transition: all 300ms ease-in-out;
 	padding-bottom: 0.5rem;
 `;
 
@@ -90,7 +93,8 @@ export const DailyDetails = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: repeat(3, auto);
-	gap: 0 1em;
+	gap: 0.5em 1em;
+	margin: auto 0;
 	width: 100%;
 	font-size: 0.9rem;
 `;

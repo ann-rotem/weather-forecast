@@ -33,27 +33,27 @@ const Day = ({ day, index, active, handleToggle }) => {
 				</S.Container>
 				<S.DailyDetails>
 					<S.Container padding="0">
-						<Text>Feels Like:</Text>
+						<Text weight="300">Feels Like:</Text>
 						<Text color="strong">{day.feels_like}&deg;</Text>
 					</S.Container>
 					<S.Container padding="0">
-						<Text>Humidity:</Text>
+						<Text weight="300">Humidity:</Text>
 						<Text color="strong">{day.humidity}%</Text>
 					</S.Container>
 					<S.Container padding="0">
-						<Text>Precipitation:</Text>
+						<Text weight="300">Precipitation:</Text>
 						<Text color="strong">{day.precipitation}%</Text>
 					</S.Container>
 					<S.Container padding="0">
-						<Text>Clouds:</Text>
+						<Text weight="300">Clouds:</Text>
 						<Text color="strong">{day.clouds}%</Text>
 					</S.Container>
 					<S.Container padding="0">
-						<Text>Sunrise:</Text>
+						<Text weight="300">Sunrise:</Text>
 						<Text color="strong">{day.sunrise}</Text>
 					</S.Container>
 					<S.Container padding="0">
-						<Text>Sunset:</Text>
+						<Text weight="300">Sunset:</Text>
 						<Text color="strong">{day.sunset}</Text>
 					</S.Container>
 				</S.DailyDetails>
