@@ -36,12 +36,11 @@ export const Wrapper = styled(ContentWrapper)`
 		"temp icon"
 		"description icon";
 	width: 100%;
-	padding: ${({ theme }) => theme.spacing.small};
+	padding: ${({ theme }) => theme.spacing.medium};
 	margin-bottom: ${({ theme }) => theme.spacing.medium};
 
 	@media only screen and (min-width: ${({ theme }) =>
 			theme.breakpoints.laptop}) {
-		padding: ${({ theme }) => theme.spacing.medium};
 		margin-bottom: 0;
 		gap: 0 ${({ theme }) => theme.spacing.small};
 	}
@@ -64,7 +63,6 @@ export const Icon = styled(IconWrapper)`
 
 export const CurrentTemp = styled.div`
 	grid-area: temp;
-	padding-left: 0.5em;
 	line-height: 1;
 
 	h2 {
@@ -83,9 +81,6 @@ export const CurrentTemp = styled.div`
 export const Description = styled.p`
 	grid-area: description;
 	align-self: end;
-	padding-left: 0.5em;
-	word-wrap: normal;
-
 	text-transform: capitalize;
 `;
 
