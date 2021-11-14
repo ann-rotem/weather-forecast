@@ -78,7 +78,7 @@ CurrentWeather.propTypes = {
 		precipitation: PropTypes.number,
 		clouds: PropTypes.number,
 		wind: PropTypes.number,
-		uvi: PropTypes.number,
+		uvi: PropTypes.string,
 		dew: PropTypes.number,
 		sunset: PropTypes.string,
 		sunrise: PropTypes.string,
