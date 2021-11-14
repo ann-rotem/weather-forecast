@@ -21,19 +21,19 @@ const Main = () => {
 
 	// get current weather, hourly and daily forecast from API by coordinates
 	const fetchWeatherByCoords = async (lat, lon) => {
-		console.log("fetchWeather start");
+		console.info("fetchWeather start");
 		try {
 			const response = await axios.get(
 				`${BASE_URL}data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,alerts&appid=${API_KEY}`
 			);
-			console.log("fetchWeather finish: success");
-			console.log(response);
+			console.info("fetch weather by coords finish: success");
 			setLoading(false);
 			setError(null);
 			setData(response.data);
 		} catch (err) {
-			console.log(`fetchWeather finish: error ${err.code}`);
-			console.log(err.message);
+			console.error(
+				`fetch weather by coords failed. error (${err.code}): ${err.message}`
+			);
 			setLoading(false);
 			setError(err.message);
 			setData(null);
@@ -41,7 +41,7 @@ const Main = () => {
 	};
 
 	const getGeolocation = () => {
-		console.log("geolocation start");
+		console.info("geolocation start");
 		setLoading(true);
 		setError(null);
 		setLocation(null);
@@ -55,11 +55,10 @@ const Main = () => {
 				position.coords.longitude
 			);
 			setLocation("Current Location");
-			console.log("geolocation finish: success");
+			console.info("geolocation finish: success");
 		};
 		const handleError = (err) => {
-			console.log(`geolocation finish: error ${err.message}`);
-			console.log(err);
+			console.error(`geolocation failed. error: ${err.message}`);
 			switch (err.code) {
 				case err.PERMISSION_DENIED:
 					setError(
@@ -80,7 +79,7 @@ const Main = () => {
 		if (!navigator.geolocation) {
 			setError("Geolocation is not supported by your browser");
 			setLoading(false);
-			console.log("geolocation finish: not supported");
+			console.warning("geolocation not supported");
 		}
 		navigator.geolocation.getCurrentPosition(
 			handleSuccess,
@@ -91,15 +90,14 @@ const Main = () => {
 
 	// get latitude and longitude from query
 	const forwardGeocoding = async (query) => {
-		console.log("forward geocoding start");
+		console.info("forward geocoding start");
 		setLoading(true);
 		setLocation(null);
 		try {
 			const response = await axios.get(
 				`${process.env.REACT_APP_HERE_GEO_URL}?q=${query}&lang=en-US&apiKey=${process.env.REACT_APP_HERE_API_KEY}`
 			);
-			console.log("forward geocoding finish: success");
-			console.log(response.data);
+			console.info("forward geocoding finish: success");
 			const result = response.data.items[0];
 			if (!result) {
 				throw new Error(
@@ -108,11 +106,11 @@ const Main = () => {
 			}
 			fetchWeatherByCoords(result.position.lat, result.position.lng);
 			setLocation(result.title);
-			//setLoading(false);
 			setError(null);
 		} catch (err) {
-			console.log("forward geocoding finish: error");
-			console.log(err);
+			console.error(
+				`forward geocoding failed. Error(${err.code}): ${err.message}`
+			);
 			setLoading(false);
 			setError(err.message);
 		}
