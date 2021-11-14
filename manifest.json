@@ -1,0 +1,16 @@
+{
+	"short_name": "Weather App",
+	"name": "React Weather Forecast App",
+	"description": "A weather forecast app.",
+	"icons": [
+		{
+			"src": "favicon.ico",
+			"sizes": "64x64",
+			"type": "image/x-icon"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#e6e5d5",
+	"background_color": "#2f3235"
+}
